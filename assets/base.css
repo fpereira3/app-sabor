@@ -1,0 +1,43 @@
+/* Estructura base del prototipo navegable.
+   Los estilos de cada componente están en línea (style="…") porque vienen
+   del lienzo de diseño; design/tokens.css define los valores reutilizables
+   para la implementación definitiva. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--sm-surface-container-highest);
+  font-family: var(--sm-font-body);
+  color: var(--sm-on-surface);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--sm-primary); }
+a:hover { color: #7F2B00; }
+:focus-visible { outline: 3px solid var(--sm-primary-container); outline-offset: 2px; }
+
+/* Columna móvil centrada: ocupa toda la pantalla en un teléfono
+   y se ve como un dispositivo en escritorio. */
+.app {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 0 0 1px var(--sm-surface-container-high), 0 20px 40px -8px rgba(28, 25, 23, 0.18);
+}
+
+/* El mapa ilustrado ocupa todo su contenedor. */
+.app svg[preserveAspectRatio] { width: 100%; height: 100%; }
+
+/* La barra inferior queda fija al hacer scroll. */
+nav[aria-label="Navegación principal"] {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
+}
+/* Las barras superiores también quedan visibles. */
+.app > header { position: sticky; top: 0; z-index: 10; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
