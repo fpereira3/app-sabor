@@ -64,21 +64,25 @@ Todas las rutas son relativas (`../assets/`, `../design/`), así que la carpeta 
 | Archivo | Pantalla |
 |---|---|
 | `index.html` | Bienvenida: mapa de la zona y permiso de ubicación (el botón dispara el permiso del navegador) |
-| `explorar.html` | Mapa, restaurante seleccionado, promociones y lista cercana |
-| `platos.html` | Buscador por disponibilidad con semáforo en vivo |
-| `restaurante.html` | Ficha del restaurante, carta en vivo, promociones e información |
-| `plato.html` | Detalle del plato |
-| `promociones.html` | Promociones cercanas |
-| `resenas.html` | Reseñas y fotos |
-| `perfil.html` | Perfil del comensal: datos, avisos, preferencias y guardados |
+| `explorar.html` | Mapa real (OSM), local seleccionado, carrusel de promociones y lista de cercanos con el % de carta disponible de cada uno |
+| `platos.html` | Los platos mejor valorados de todas las cocinas, con semáforo en vivo y resumen global (dona y porcentajes calculados) |
+| `restaurante.html` | Ficha del restaurante, carta en vivo (semáforo y precios con promoción), promociones e información |
+| `plato.html` | Detalle del plato (única pantalla que sigue estática) |
+| `promociones.html` | Promociones activas de todos los locales, con la destacada del día y las demás en tarjetas |
+| `resenas.html` | Reseñas y fotos del local activo |
+| `perfil.html` | Perfil del comensal: datos, avisos, preferencias y guardados (todo persiste en la base; quitar un guardado lo borra de verdad) |
 
 Los mapas de `explorar` y de la bienvenida son reales: Leaflet con tiles de OpenStreetMap (attribution obligatoria, © OpenStreetMap contributors) y los pines del sistema visual como marcadores. La posición del comensal viene de la Geolocation API del navegador, de forma local (la coordenada no sale del dispositivo), y los locales de prueba se colocan en función de ella mediante offsets en grados, así las distancias de la demostración se ven bien en cualquier ciudad. La bienvenida pide el permiso al cargar (y su botón «Permitir ubicación» lo vuelve a intentar antes de continuar); sin permiso el mapa muestra un aviso visible y usa un centro de demostración en Santiago. Requiere conexión para los tiles; si el CDN de Leaflet no carga, la columna queda con el fondo del mapa y nada se rompe.
 
+**Guardados y preferencias:** el ícono de marcador (Explorar, Platos y el detalle de plato) guarda o quita un local en el perfil y lo escribe en la base al instante; en Perfil se ven con su semáforo y se pueden quitar, y los interruptores de avisos y preferencias también persisten. Al recargar, todo sigue ahí.
+
 Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Seis de las pantallas (explorar, restaurante, platos, promociones, resenas y perfil) se pintan desde la base de datos con `comensal/render.js` —semáforo real, precios con promoción, guardados—; el detalle de plato sigue siendo estático. Todas usan el sistema visual oficial: tokens de `design/tokens.css`, componentes `sm-*` de `assets/componentes.css`, clases de vista `cm-*` en `comensal/comensal.css` e iconos de `assets/js/iconos.js`, y arrancan dentro de `SaborMapDB.listo().then(...)` para pintar los iconos una vez cargados los datos.
+
+**Barras superiores, un solo estilo en todo el prototipo:** cuadradas (radio 0), a sangre de márgenes, con `border-bottom` de hairline y sombra solo en la línea inferior — tanto en el comensal (`.cm-barra` en Restaurante/Plato/Reseñas/Perfil y `.cm-cabecera` en Explorar/Platos/Promociones) como en el panel del local (`.panel-cabecera`, ahora con fondo sólido). Las subpáginas muestran título real y subtítulo de contexto (por ejemplo, «La Trattoria del Sol · Barrio Italia · Cocina italiana artesanal»), y el buscador sigue el mismo tratamiento: cuadrado, con sombra inferior y pegado a los márgenes. La familia `cm-progreso` (la pista fina de 6px de las tarjetas) es independiente de `.cm-barra`.
 
 ## Panel del local
 
-Es funcional: los cambios se guardan en la base compartida (SQLite al servir con `server.py`, con reserva en `localStorage` si no hay servidor) y se pueden deshacer desde el aviso que aparece tras cada acción. Solo administra la carta y lo asociado a ella; no incluye ventas, pedidos ni reservas.
+Es funcional: los cambios se guardan en la base compartida (SQLite al servir con `server.py`, con reserva en `localStorage` si no hay servidor) y se pueden deshacer desde el aviso que aparece tras cada acción. Su barra superior (`.panel-cabecera`) usa el mismo tratamiento visual que el comensal: cuadrada, fondo sólido y sombra solo en la línea inferior. Solo administra la carta y lo asociado a ella; no incluye ventas, pedidos ni reservas.
 
 | Sección | Qué permite |
 |---|---|
