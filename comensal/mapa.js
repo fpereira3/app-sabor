@@ -1,12 +1,14 @@
 /* SaborMap · mapa real (Leaflet + OpenStreetMap) para toda página con mapa.
-   Prototipo sin backend:
+   Prototipo sin backend propio:
    - La posición del comensal sale de la Geolocation API del navegador,
      de forma local: la coordenada no sale del dispositivo.
-   - Los locales de prueba se colocan RELATIVOS a esa posición (_offsets
-     en grados), así "a 350 m" funciona en cualquier ciudad.
+   - Los pines vienen de la base de datos (SaborMapDB); cada local se
+     coloca con su offset en grados respecto de la posición del
+     comensal, así "a 350 m" funciona en cualquier ciudad.
    - Sin permiso, sin soporte o sin Leaflet: se usa el centro de
      demostración (Santiago Centro) y nada se rompe.
-   Uso: SaborMapMapa.crear('cm-mapa-hoja', { ubicacion, popups, zoom }).
+   Uso: SaborMapMapa.crear('cm-mapa-hoja', { ubicacion, popups, zoom,
+   sinUbicacion }), dentro de SaborMapDB.listo().then(...).
    El atributo data-permiso-ubicacion convierte un enlace en "pedir el
    permiso y luego navegar". */
 (function () {
@@ -57,51 +59,61 @@
     });
   }
 
-  /* Desplazamientos en grados respecto de la posición del comensal:
-     reproducen las distancias de la demostración en cualquier ciudad. */
-  var LOCALES = [
-    {
-      nombre: 'La Trattoria del Sol',
-      sub: 'Italiana · 350 m',
-      dLat: 0.0021, dLon: 0.0065,
-      glifo: GLIFOS.pizza,
-      seleccionado: true,
-      pill: '<span class="cm-mapa__valor cm-mapa__valor--oscura"><span></span>4.8 · 88% disponible</span>'
-    },
-    {
-      nombre: 'Ramen Ya',
-      sub: 'Ramen y nikkei · 800 m',
-      dLat: 0.0033, dLon: -0.01,
-      glifo: GLIFOS.bol,
-      pill: '<span class="cm-mapa__valor cm-mapa__valor--ambar"><span></span>4.7</span>'
-    },
-    {
-      nombre: 'Café Alameda',
-      sub: 'Desayunos y café · 650 m',
-      dLat: 0.0049, dLon: -0.0066,
-      glifo: GLIFOS.copa,
-      pill: '<span class="cm-mapa__valor"><span></span>4.9</span>'
-    },
-    {
-      nombre: 'Puerto Sabor',
-      sub: 'Cevichería · 1,1 km',
-      dLat: 0.0075, dLon: -0.0165,
-      glifo: GLIFOS.pescado,
-      pill: '<span class="cm-mapa__valor"><span></span>4.8</span>'
-    },
-    {
-      nombre: 'Aperitivos de la casa',
-      sub: 'La Trattoria del Sol · 350 m',
-      dLat: 0.0017, dLon: 0.0055,
-      glifo: GLIFOS.etiqueta,
-      pill: '<span class="cm-mapa__valor cm-mapa__valor--naranja"><span></span>−20% hoy</span>'
+  function distanciaTexto(d) {
+    if (d >= 1000) {
+      return (d / 1000).toLocaleString('es-CL', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' km';
     }
-  ];
+    return d + ' m';
+  }
+
+  function bandaPromo(pr) {
+    if (pr.tipo === 'porcentaje') return '−' + pr.valor + '% hoy';
+    if (pr.tipo === '2x1') return '2x1 hoy';
+    if (pr.tipo === 'menu') return 'Menú del día';
+    return 'Promo hoy';
+  }
+
+  /* Pines de la base de datos, con sus offsets respecto del comensal. */
+  function pinesDeLaBase(DB) {
+    var pines = [];
+    DB.locales().forEach(function (l) {
+      var esActivo = l.id === DB.datos().activo;
+      var pill = esActivo
+        ? '<span class="cm-mapa__valor cm-mapa__valor--oscura"><span></span>' +
+          l.comensal.valoracion + ' · ' + DB.resumenLocal(l.id).pct + '% disponible</span>'
+        : '<span class="cm-mapa__valor"><span></span>' + l.comensal.valoracion + '</span>';
+      pines.push({
+        nombre: l.local.nombre,
+        sub: l.local.cocina + ' · ' + distanciaTexto(l.comensal.distancia),
+        glifo: GLIFOS[l.comensal.glifo] || GLIFOS.pizza,
+        seleccionado: esActivo,
+        pill: pill,
+        dLat: l.comensal.dLat,
+        dLon: l.comensal.dLon
+      });
+    });
+
+    /* Pin extra para una promoción sin plato del local activo. */
+    var activo = DB.activo();
+    var promo = DB.promosActivas(activo.id).filter(function (p) { return !p.platoId; })[0];
+    if (promo) {
+      pines.push({
+        nombre: promo.titulo,
+        sub: activo.local.nombre + ' · ' + distanciaTexto(activo.comensal.distancia),
+        glifo: GLIFOS.etiqueta,
+        pill: '<span class="cm-mapa__valor cm-mapa__valor--naranja"><span></span>' + bandaPromo(promo) + '</span>',
+        dLat: activo.comensal.dLat - 0.0004,
+        dLon: activo.comensal.dLon + 0.001
+      });
+    }
+    return pines;
+  }
 
   function crear(idContenedor, opciones) {
     opciones = opciones || {};
+    var DB = window.SaborMapDB;
     var nodo = document.getElementById(idContenedor);
-    if (!window.L || !nodo) return null;
+    if (!window.L || !nodo || !DB) return null;
 
     var zoom = opciones.zoom || 15;
     var mapa = L.map(idContenedor, { zoomControl: false, scrollWheelZoom: false });
@@ -125,6 +137,7 @@
       nodo.parentElement.appendChild(avisoNodo);
     }
 
+    var pines = pinesDeLaBase(DB);
     var capa = { usuario: null, locales: [] };
 
     /* Coloca al comensal y los locales según un punto de origen. */
@@ -134,13 +147,13 @@
 
       for (var i = 0; i < capa.locales.length; i++) mapa.removeLayer(capa.locales[i]);
       capa.locales = [];
-      for (var j = 0; j < LOCALES.length; j++) {
-        var l = LOCALES[j];
-        var marcador = L.marker([origen[0] + l.dLat, origen[1] + l.dLon], { icon: iconoPin(l), title: l.nombre }).addTo(mapa);
+      for (var j = 0; j < pines.length; j++) {
+        var m = pines[j];
+        var marcador = L.marker([origen[0] + m.dLat, origen[1] + m.dLon], { icon: iconoPin(m), title: m.nombre }).addTo(mapa);
         if (opciones.popups !== false) {
           marcador.bindPopup(
-            '<div class="cm-mapa-pop"><strong>' + l.nombre + '</strong>' +
-            '<span>' + l.sub + '</span>' +
+            '<div class="cm-mapa-pop"><strong>' + m.nombre + '</strong>' +
+            '<span>' + m.sub + '</span>' +
             '<a href="restaurante.html">Ver carta</a></div>'
           );
         }

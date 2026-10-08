@@ -139,116 +139,7 @@
       </button>
     </div>
 
-    <div class="cm-resenas">
-
-      <article class="cm-resena">
-        <div class="cm-resena__fila">
-          <span class="cm-resena__avatar">C</span>
-          <span class="cm-resena__textos">
-            <span class="cm-resena__nombre">
-              Camila R.
-              <span class="cm-resena__verificada">
-                <span data-icono="check" data-tamano="11"></span>
-                Verificada
-              </span>
-            </span>
-            <span class="cm-resena__fecha">Hace 2 días</span>
-          </span>
-          <span class="cm-resena__nota">
-            <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
-            5.0
-          </span>
-        </div>
-        <div class="cm-resena__platos">
-          <span class="sm-estado sm-estado--disponible">Fettuccine con burrata · estaba disponible</span>
-        </div>
-        <p class="cm-resena__texto">Me encanta que la app avise si un plato está agotado antes de ir. Fuimos por el fettuccine con burrata y estaba disponible, tal como marcaba el semáforo. El lugar es tranquilo y muy lindo.</p>
-        <div class="cm-resena__fotos">
-          <img src="../assets/img/rev1.jpg" alt="Fettuccine con burrata">
-          <img src="../assets/img/rev2.jpg" alt="Mesa con lasaña y copas de vino">
-        </div>
-        <div class="cm-resena__pie">
-          <button type="button" class="cm-resena__util">
-            <span data-icono="util" data-tamano="14"></span>
-            Útil (24)
-          </button>
-          <button type="button" class="cm-resena__compartir">
-            <span data-icono="share" data-tamano="15"></span>
-            Compartir
-          </button>
-        </div>
-      </article>
-
-      <article class="cm-resena">
-        <div class="cm-resena__fila">
-          <span class="cm-resena__avatar cm-resena__avatar--ambar">M</span>
-          <span class="cm-resena__textos">
-            <span class="cm-resena__nombre">
-              Mateo Valenzuela
-              <span class="cm-resena__verificada">
-                <span data-icono="check" data-tamano="11"></span>
-                Verificada
-              </span>
-            </span>
-            <span class="cm-resena__fecha">Hace 1 semana</span>
-          </span>
-          <span class="cm-resena__nota">
-            <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
-            4.0
-          </span>
-        </div>
-        <div class="cm-resena__platos">
-          <span class="sm-estado sm-estado--agotado">Pizza trufada · agotada</span>
-          <span class="sm-estado sm-estado--disponible">Lasaña · disponible</span>
-        </div>
-        <p class="cm-resena__texto">Queríamos la pizza trufada, pero aparecía en rojo y efectivamente no quedaba. Probamos la lasaña, que estaba en verde, y fue excelente.</p>
-        <div class="cm-resena__pie">
-          <button type="button" class="cm-resena__util">
-            <span data-icono="util" data-tamano="14"></span>
-            Útil (11)
-          </button>
-          <button type="button" class="cm-resena__compartir">
-            <span data-icono="share" data-tamano="15"></span>
-            Compartir
-          </button>
-        </div>
-      </article>
-
-      <article class="cm-resena">
-        <div class="cm-resena__fila">
-          <span class="cm-resena__avatar cm-resena__avatar--verde">S</span>
-          <span class="cm-resena__textos">
-            <span class="cm-resena__nombre">
-              Sofía Mendoza
-              <span class="cm-resena__verificada">
-                <span data-icono="check" data-tamano="11"></span>
-                Verificada
-              </span>
-            </span>
-            <span class="cm-resena__fecha">Hace 2 semanas</span>
-          </span>
-          <span class="cm-resena__nota">
-            <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
-            5.0
-          </span>
-        </div>
-        <div class="cm-resena__platos">
-          <span class="sm-estado sm-estado--sin-info">Terraza</span>
-        </div>
-        <p class="cm-resena__texto">La terraza es ideal para cenar. Atención impecable y buen ritmo entre platos. Volveremos el fin de semana.</p>
-        <div class="cm-resena__pie">
-          <button type="button" class="cm-resena__util">
-            <span data-icono="util" data-tamano="14"></span>
-            Útil (19)
-          </button>
-          <button type="button" class="cm-resena__compartir">
-            <span data-icono="share" data-tamano="15"></span>
-            Compartir
-          </button>
-        </div>
-      </article>
-
-    </div>
+    <div class="cm-resenas" data-render="resenas"></div>
 
     <button type="button" class="sm-btn sm-btn--primario sm-btn--grande">
       <span data-icono="pencil"></span>
@@ -258,7 +149,15 @@
   </div>
 
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="render.js"></script>
 <script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapRender.resenas();
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

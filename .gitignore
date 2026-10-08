@@ -3,3 +3,8 @@ Thumbs.db
 node_modules/
 dist/
 .env
+
+# base de datos generada al arrancar server.py
+data/sabormap.sqlite
+data/sabormap.sqlite-journal
+__pycache__/

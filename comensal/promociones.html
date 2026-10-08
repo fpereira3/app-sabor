@@ -28,11 +28,11 @@
     <a class="cm-cabecera__avatar" href="perfil.html" aria-label="Tu perfil"><img src="../assets/img/avatar.jpg" alt=""></a>
   </header>
 
-  <div class="cm-pantalla cm-pantalla--promociones">
+  <div class="cm-pantalla cm-pantalla--promociones" data-render="listado-promos">
 
     <div class="cm-encabezado-pantalla">
       <h1>Promociones cerca de ti</h1>
-      <p>12 promociones activas hoy en Santiago Centro</p>
+      <p data-render="promos-cuenta">12 promociones activas hoy en Santiago Centro</p>
     </div>
 
     <div class="cm-chips" role="group" aria-label="Filtros de promociones">
@@ -56,114 +56,6 @@
       <span data-icono="info" data-tamano="18"></span>
       <span>SaborMap solo informa las promociones. Cada una se aplica directamente en el restaurante, según sus condiciones.</span>
     </p>
-
-    <article class="cm-promo-destacada" aria-label="Promoción destacada del día">
-      <div class="cm-promo-destacada__foto">
-        <img src="../assets/img/margherita.jpg" alt="Pizza Margherita sobre tabla de madera">
-        <span class="cm-promo-destacada__banda"><span data-icono="fuego" data-tamano="14"></span>−25% hoy</span>
-        <span class="cm-promo-destacada__distancia">350 m</span>
-      </div>
-      <div class="cm-promo-destacada__cuerpo">
-        <span class="cm-promo-destacada__kicker">DESTACADA DEL DÍA</span>
-        <h2 class="cm-promo-destacada__titulo">Pizza Margherita D.O.P.</h2>
-        <span class="cm-promo-destacada__sub">La Trattoria del Sol · Barrio Italia</span>
-        <div class="cm-promo-destacada__fila">
-          <span class="cm-plato__precios">
-            <strong class="cm-promo-destacada__precio">$8.990</strong>
-            <span class="cm-plato__precio-anterior">$11.990</span>
-          </span>
-          <span class="sm-estado sm-estado--disponible">Disponible</span>
-        </div>
-        <span class="cm-promo-destacada__horario">
-          <span data-icono="clock" data-tamano="15"></span>
-          Válida hoy hasta las 16:00
-        </span>
-        <a class="cm-tarjeta-local__principal cm-promo-destacada__principal" href="restaurante.html">
-          Ver en la carta
-          <span data-icono="arrowRight" data-tamano="18"></span>
-        </a>
-      </div>
-    </article>
-
-    <div class="cm-seccion__cabecera cm-listado__cabecera cm-listado__cabecera--separada">
-      <h2 class="cm-seccion-plato__titulo">Más promociones</h2>
-      <span class="cm-seccion__nota">Ordenadas por distancia</span>
-    </div>
-
-    <a class="cm-local-tarjeta cm-local-tarjeta--chica cm-promo-fila" href="restaurante.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/ramen.jpg" alt="Ramen tonkotsu">
-        <span class="cm-promo-fila__banda">2x1</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">Ramen tonkotsu</span>
-        <span class="cm-local-tarjeta__sub">Ramen Ya · 800 m</span>
-        <span class="cm-promo-fila__horario">
-          <span data-icono="clock" data-tamano="13"></span>
-          Hoy de 12:00 a 15:00
-        </span>
-        <div class="cm-promo-fila__pie">
-          <strong class="cm-promo-fila__precio">$9.450</strong>
-          <span class="sm-estado sm-estado--pocas">Quedan 3</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cm-local-tarjeta cm-local-tarjeta--chica cm-promo-fila" href="plato.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/diavola.jpg" alt="Pizza Diavola Piccante">
-        <span class="cm-promo-fila__banda">−20%</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">Pizza Diavola Piccante</span>
-        <span class="cm-local-tarjeta__sub">La Trattoria del Sol · 350 m</span>
-        <span class="cm-promo-fila__horario">
-          <span data-icono="clock" data-tamano="13"></span>
-          Todo el día
-        </span>
-        <div class="cm-promo-fila__pie">
-          <strong class="cm-promo-fila__precio">$9.990</strong>
-          <span class="sm-estado sm-estado--pocas">Quedan 4</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cm-local-tarjeta cm-local-tarjeta--chica cm-promo-fila" href="restaurante.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/brunch.jpg" alt="Menú de almuerzo con bebida">
-        <span class="cm-promo-fila__banda">Menú</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">Menú de almuerzo con bebida</span>
-        <span class="cm-local-tarjeta__sub">Café Alameda · 650 m</span>
-        <span class="cm-promo-fila__horario">
-          <span data-icono="clock" data-tamano="13"></span>
-          Lunes a viernes, 12:30 a 15:30
-        </span>
-        <div class="cm-promo-fila__pie">
-          <strong class="cm-promo-fila__precio">$7.900</strong>
-          <span class="sm-estado sm-estado--disponible">Disponible</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="cm-local-tarjeta cm-local-tarjeta--chica cm-promo-fila" href="restaurante.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/ambiente.jpg" alt="Aperitivos de la casa">
-        <span class="cm-promo-fila__banda">2x1</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">Aperitivos de la casa</span>
-        <span class="cm-local-tarjeta__sub">La Trattoria del Sol · 350 m</span>
-        <span class="cm-promo-fila__horario">
-          <span data-icono="clock" data-tamano="13"></span>
-          Hoy de 17:00 a 20:00
-        </span>
-        <div class="cm-promo-fila__pie">
-          <span class="sm-estado sm-estado--sin-info">Sin stock informado</span>
-        </div>
-      </div>
-    </a>
 
   </div>
 
@@ -191,7 +83,15 @@
   </nav>
 
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="render.js"></script>
 <script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapRender.promociones();
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

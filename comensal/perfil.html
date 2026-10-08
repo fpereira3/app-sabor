@@ -44,15 +44,15 @@
       <div class="cm-perfil__estadisticas">
         <div class="cm-dato">
           <span class="cm-dato__clave">GUARDADOS</span>
-          <span class="cm-dato__valor">12 locales</span>
+          <span class="cm-dato__valor" data-render="stat-guardados">12 locales</span>
         </div>
         <div class="cm-dato">
           <span class="cm-dato__clave">RESEÑAS</span>
-          <span class="cm-dato__valor">8 escritas</span>
+          <span class="cm-dato__valor" data-render="stat-resenas">8 escritas</span>
         </div>
         <div class="cm-dato">
           <span class="cm-dato__clave">PLATOS</span>
-          <span class="cm-dato__valor">46 probados</span>
+          <span class="cm-dato__valor" data-render="stat-platos">46 probados</span>
         </div>
       </div>
 
@@ -72,7 +72,7 @@
             <span class="cm-ficha__valor">Te avisamos cuando un plato que guardaste vuelve a la carta.</span>
           </div>
           <label class="sm-switch sm-switch--marca">
-            <input type="checkbox" role="switch" checked aria-label="Avisar cuando un plato guardado vuelva a estar disponible">
+            <input type="checkbox" role="switch" checked data-preferencia="avisosPlato" aria-label="Avisar cuando un plato guardado vuelva a estar disponible">
             <span class="sm-switch__pista"></span>
           </label>
         </div>
@@ -83,7 +83,7 @@
             <span class="cm-ficha__valor">Novedades de locales a menos de 1 km durante el día.</span>
           </div>
           <label class="sm-switch sm-switch--marca">
-            <input type="checkbox" role="switch" checked aria-label="Avisar de promociones cercanas">
+            <input type="checkbox" role="switch" checked data-preferencia="avisosPromos" aria-label="Avisar de promociones cercanas">
             <span class="sm-switch__pista"></span>
           </label>
         </div>
@@ -94,7 +94,7 @@
             <span class="cm-ficha__valor">Cuando un restaurante guardado actualiza su menú.</span>
           </div>
           <label class="sm-switch sm-switch--marca">
-            <input type="checkbox" role="switch" aria-label="Avisar cuando una carta seguida se actualiza">
+            <input type="checkbox" role="switch" data-preferencia="avisosCartas" aria-label="Avisar cuando una carta seguida se actualiza">
             <span class="sm-switch__pista"></span>
           </label>
         </div>
@@ -109,7 +109,7 @@
             <span class="cm-ficha__valor">Las listas muestran solo lo disponible hoy.</span>
           </div>
           <label class="sm-switch">
-            <input type="checkbox" role="switch" checked aria-label="Ocultar platos agotados">
+            <input type="checkbox" role="switch" checked data-preferencia="ocultarAgotados" aria-label="Ocultar platos agotados">
             <span class="sm-switch__pista"></span>
           </label>
         </div>
@@ -120,89 +120,15 @@
             <span class="cm-ficha__valor">Se excluyen los que ya cerraron o están en cierre temporal.</span>
           </div>
           <label class="sm-switch">
-            <input type="checkbox" role="switch" aria-label="Mostrar solo locales abiertos">
+            <input type="checkbox" role="switch" data-preferencia="soloAbiertos" aria-label="Mostrar solo locales abiertos">
             <span class="sm-switch__pista"></span>
           </label>
         </div>
       </section>
 
-      <section class="cm-perfil__guardados" aria-label="Locales guardados">
+      <section class="cm-perfil__guardados" data-render="guardados" aria-label="Locales guardados">
         <h2 class="cm-seccion-plato__titulo" id="guardados">Guardados</h2>
 
-        <a class="cm-local-tarjeta" href="restaurante.html">
-          <div class="cm-local-tarjeta__foto">
-            <img src="../assets/img/brunapoli.jpg" alt="Plato de La Trattoria del Sol">
-            <span class="cm-distancia cm-distancia--chica">350 m</span>
-          </div>
-          <div class="cm-local-tarjeta__cuerpo">
-            <span class="cm-local-tarjeta__nombre">La Trattoria del Sol</span>
-            <span class="cm-local-tarjeta__sub">Barrio Italia · Italiana · $$</span>
-            <span class="cm-local-tarjeta__rating">
-              <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-              <strong>4.8</strong> (342) · <span class="cm-promo-mini">1 promoción</span>
-            </span>
-            <div class="cm-local-tarjeta__barra">
-              <div class="cm-barra__fila">
-                <span class="cm-barra__disponible">88% de la carta disponible</span>
-                <span class="cm-barra__detalle">14 · 2 pocas</span>
-              </div>
-              <div class="cm-barra">
-                <span class="cm-barra__lleno" style="width: 80%;"></span>
-                <span class="cm-barra__pocas" style="width: 8%;"></span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a class="cm-local-tarjeta" href="restaurante.html">
-          <div class="cm-local-tarjeta__foto">
-            <img src="../assets/img/brunch.jpg" alt="Plato de Café Alameda">
-            <span class="cm-distancia cm-distancia--chica">650 m</span>
-          </div>
-          <div class="cm-local-tarjeta__cuerpo">
-            <span class="cm-local-tarjeta__nombre">Café Alameda</span>
-            <span class="cm-local-tarjeta__sub">Lastarria · Desayunos y café · $$</span>
-            <span class="cm-local-tarjeta__rating">
-              <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-              <strong>4.9</strong> (512) · <span class="cm-promo-mini">1 promoción</span>
-            </span>
-            <div class="cm-local-tarjeta__barra">
-              <div class="cm-barra__fila">
-                <span class="cm-barra__disponible">92% de la carta disponible</span>
-                <span class="cm-barra__detalle">11 · 1 pocas</span>
-              </div>
-              <div class="cm-barra">
-                <span class="cm-barra__lleno" style="width: 84%;"></span>
-                <span class="cm-barra__pocas" style="width: 8%;"></span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        <a class="cm-local-tarjeta" href="restaurante.html">
-          <div class="cm-local-tarjeta__foto">
-            <img src="../assets/img/kintaro.jpg" alt="Plato de Ramen Ya">
-            <span class="cm-distancia cm-distancia--chica">800 m</span>
-          </div>
-          <div class="cm-local-tarjeta__cuerpo">
-            <span class="cm-local-tarjeta__nombre">Ramen Ya</span>
-            <span class="cm-local-tarjeta__sub">Bellas Artes · Ramen y nikkei · $$</span>
-            <span class="cm-local-tarjeta__rating">
-              <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-              <strong>4.7</strong> (410) · <span class="cm-promo-mini">2 promociones</span>
-            </span>
-            <div class="cm-local-tarjeta__barra">
-              <div class="cm-barra__fila">
-                <span class="cm-barra__disponible">75% de la carta disponible</span>
-                <span class="cm-barra__detalle">9 · 3 pocas</span>
-              </div>
-              <div class="cm-barra">
-                <span class="cm-barra__lleno" style="width: 67%;"></span>
-                <span class="cm-barra__pocas" style="width: 8%;"></span>
-              </div>
-            </div>
-          </div>
-        </a>
       </section>
     </div>
 
@@ -232,7 +158,15 @@
   </nav>
 
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="render.js"></script>
 <script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapRender.perfil();
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

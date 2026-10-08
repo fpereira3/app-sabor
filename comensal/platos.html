@@ -28,7 +28,7 @@
     <a class="cm-cabecera__avatar" href="perfil.html" aria-label="Tu perfil"><img src="../assets/img/avatar.jpg" alt=""></a>
   </header>
 
-  <div class="cm-pantalla">
+  <div class="cm-pantalla" data-render="resultados">
 
     <div class="cm-buscador">
       <span class="cm-buscador__lupa" data-icono="search"></span>
@@ -62,16 +62,16 @@
             <span class="cm-resumen__vivo"><span data-icono="live" data-tamano="15"></span></span>
             SEMÁFORO DE PLATOS EN VIVO
           </span>
-          <p class="cm-resumen__titular"><strong class="cm-resumen__acento">84% de los platos</strong> están disponibles ahora</p>
-          <p class="cm-resumen__detalle">Según 24 cocinas activas a tu alrededor en Santiago Centro.</p>
+          <p class="cm-resumen__titular"><strong class="cm-resumen__acento" data-render="resumen-pct">84% de los platos</strong> están disponibles ahora</p>
+          <p class="cm-resumen__detalle" data-render="cocinas">Según 4 cocinas activas a tu alrededor en Santiago Centro.</p>
         </div>
         <div class="cm-resumen__dona">
           <div class="cm-resumen__dona-grafico">
             <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
               <circle cx="32" cy="32" r="26" fill="none" stroke="#F0E6E0" stroke-width="7"></circle>
-              <circle cx="32" cy="32" r="26" fill="none" stroke="#006C49" stroke-width="7" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="26.1"></circle>
+              <circle data-render="dona" cx="32" cy="32" r="26" fill="none" stroke="#006C49" stroke-width="7" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="26.1"></circle>
             </svg>
-            <span class="cm-resumen__dona-valor">84%</span>
+            <span class="cm-resumen__dona-valor" data-render="dona-valor">84%</span>
           </div>
           <span class="cm-resumen__dona-nota">Alta disp.</span>
         </div>
@@ -90,147 +90,6 @@
         Actualizado hace 2 min
       </span>
     </div>
-
-    <article class="cm-resultado">
-      <div class="cm-resultado__cuerpo">
-        <div class="cm-resultado__foto">
-          <img src="../assets/img/diavola.jpg" alt="Pizza Diavola Piccante">
-          <span class="cm-plato__insignia cm-plato__insignia--solida">−20% hoy</span>
-          <span class="cm-resultado__puntuacion">
-            <span class="cm-estrella" data-icono="star" data-tamano="11"></span>
-            4.9
-          </span>
-        </div>
-        <div class="cm-resultado__info">
-          <h3 class="cm-resultado__titulo">Pizza Diavola Piccante</h3>
-          <span class="cm-plato__precios">
-            <strong class="cm-plato__precio">$9.990</strong>
-            <span class="cm-plato__precio-anterior">$12.500</span>
-          </span>
-          <span class="cm-resultado__local">
-            La Trattoria del Sol ·
-            <span data-icono="caminata" data-tamano="13"></span>
-            350 m
-          </span>
-          <div class="cm-resultado__meta">
-            <span class="sm-estado sm-estado--pocas">Quedan 4 porciones</span>
-            <button type="button" class="cm-resultado__guardar" aria-label="Guardar plato">
-              <span data-icono="guardar" data-tamano="18"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="cm-resultado__pie">
-        <span class="cm-resultado__nota">
-          <span data-icono="clock" data-tamano="15"></span>
-          Suele agotarse antes de las 21:00
-        </span>
-        <a class="cm-plato__detalle" href="plato.html">Ver plato <span data-icono="chevRight" data-tamano="16"></span></a>
-      </div>
-    </article>
-
-    <article class="cm-resultado">
-      <div class="cm-resultado__cuerpo">
-        <div class="cm-resultado__foto">
-          <img src="../assets/img/ramen.jpg" alt="Ramen tonkotsu especial">
-          <span class="cm-resultado__puntuacion">
-            <span class="cm-estrella" data-icono="star" data-tamano="11"></span>
-            4.9
-          </span>
-        </div>
-        <div class="cm-resultado__info">
-          <h3 class="cm-resultado__titulo">Ramen tonkotsu especial</h3>
-          <span class="cm-plato__precios"><strong class="cm-plato__precio">$10.900</strong></span>
-          <span class="cm-resultado__local">
-            Ramen Ya ·
-            <span data-icono="caminata" data-tamano="13"></span>
-            450 m
-          </span>
-          <div class="cm-resultado__meta">
-            <span class="sm-estado sm-estado--disponible">Disponible ahora</span>
-            <button type="button" class="cm-resultado__guardar" aria-label="Guardar plato">
-              <span data-icono="guardar" data-tamano="18"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="cm-resultado__pie">
-        <span class="cm-resultado__nota cm-resultado__nota--positiva">
-          <span data-icono="check" data-tamano="15"></span>
-          Stock confirmado por la cocina
-        </span>
-        <a class="cm-plato__detalle" href="restaurante.html">Ver restaurante <span data-icono="chevRight" data-tamano="16"></span></a>
-      </div>
-    </article>
-
-    <article class="cm-resultado">
-      <div class="cm-resultado__cuerpo">
-        <div class="cm-resultado__foto">
-          <img src="../assets/img/ceviche.jpg" alt="Ceviche mixto clásico">
-          <span class="cm-resultado__puntuacion">
-            <span class="cm-estrella" data-icono="star" data-tamano="11"></span>
-            4.8
-          </span>
-        </div>
-        <div class="cm-resultado__info">
-          <h3 class="cm-resultado__titulo">Ceviche mixto clásico</h3>
-          <span class="cm-plato__precios"><strong class="cm-plato__precio">$12.400</strong></span>
-          <span class="cm-resultado__local">
-            Puerto Sabor ·
-            <span data-icono="caminata" data-tamano="13"></span>
-            1,1 km
-          </span>
-          <div class="cm-resultado__meta">
-            <span class="sm-estado sm-estado--disponible">Disponible, pesca del día</span>
-            <button type="button" class="cm-resultado__guardar" aria-label="Guardar plato">
-              <span data-icono="guardar" data-tamano="18"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="cm-resultado__pie">
-        <span class="cm-resultado__nota cm-resultado__nota--positiva">
-          <span data-icono="check" data-tamano="15"></span>
-          Pescado recibido hoy a las 10:30
-        </span>
-        <a class="cm-plato__detalle" href="restaurante.html">Ver restaurante <span data-icono="chevRight" data-tamano="16"></span></a>
-      </div>
-    </article>
-
-    <article class="cm-resultado cm-resultado--agotado">
-      <div class="cm-resultado__cuerpo">
-        <div class="cm-resultado__foto">
-          <img src="../assets/img/margherita.jpg" alt="Pizza Margherita trufada">
-          <span class="cm-resultado__sello">AGOTADO</span>
-          <span class="cm-resultado__puntuacion">
-            <span class="cm-estrella" data-icono="star" data-tamano="11"></span>
-            4.7
-          </span>
-        </div>
-        <div class="cm-resultado__info">
-          <h3 class="cm-resultado__titulo">Pizza Margherita trufada</h3>
-          <span class="cm-plato__precios"><strong class="cm-plato__precio">$13.900</strong></span>
-          <span class="cm-resultado__local">
-            La Trattoria del Sol ·
-            <span data-icono="caminata" data-tamano="13"></span>
-            350 m
-          </span>
-          <div class="cm-resultado__meta">
-            <span class="sm-estado sm-estado--agotado">Agotado por hoy</span>
-            <button type="button" class="cm-resultado__guardar" aria-label="Avisarme cuando vuelva">
-              <span data-icono="campana" data-tamano="18"></span>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="cm-resultado__pie">
-        <span class="cm-resultado__nota">
-          <span data-icono="refresh" data-tamano="15"></span>
-          Vuelve mañana a las 13:00
-        </span>
-        <a class="cm-plato__detalle" href="restaurante.html">Ver restaurante <span data-icono="chevRight" data-tamano="16"></span></a>
-      </div>
-    </article>
 
   </div>
 
@@ -258,7 +117,15 @@
   </nav>
 
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="render.js"></script>
 <script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapRender.platos();
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

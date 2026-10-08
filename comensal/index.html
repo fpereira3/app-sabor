@@ -77,10 +77,16 @@
 
   </div>
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="../assets/js/iconos.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="mapa.js"></script>
-<script>SaborMapMapa.crear('cm-mapa-hoja', { popups: false, sinUbicacion: 'No vemos tu ubicación · zona de demostración' });</script>
-<script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapMapa.crear('cm-mapa-hoja', { popups: false, sinUbicacion: 'No vemos tu ubicación · zona de demostración' });
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

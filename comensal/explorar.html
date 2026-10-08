@@ -81,7 +81,7 @@
       <div class="cm-tarjeta-local__cuerpo">
         <div class="cm-tarjeta-local__titulo-fila">
           <h2 class="cm-tarjeta-local__titulo">La Trattoria del Sol</h2>
-          <button type="button" class="cm-btn-icono cm-btn-icono--chico" aria-label="Guardar restaurante">
+          <button type="button" class="cm-btn-icono cm-btn-icono--chico" data-guardar="trattoria-del-sol" aria-label="Guardar restaurante">
             <span data-icono="guardar"></span>
           </button>
         </div>
@@ -116,147 +116,20 @@
 
   <section class="cm-seccion cm-seccion--carrusel" aria-label="Promociones cercanas">
     <div class="cm-seccion__cabecera">
-      <h2 class="cm-seccion__titulo">Promociones cerca de ti <span class="cm-cuenta-badge">5 hoy</span></h2>
+      <h2 class="cm-seccion__titulo">Promociones cerca de ti <span class="cm-cuenta-badge" data-render="promos-hoy">5 hoy</span></h2>
       <a class="cm-plato__detalle" href="promociones.html">Ver todas <span data-icono="chevRight" data-tamano="16"></span></a>
     </div>
 
-    <div class="cm-carrusel">
-      <a class="cm-carrusel__tarjeta" href="restaurante.html">
-        <div class="cm-carrusel__foto">
-          <img src="../assets/img/margherita.jpg" alt="Pizza Margherita D.O.P.">
-          <span class="cm-carrusel__banda">−25% hoy</span>
-          <span class="cm-carrusel__distancia">350 m</span>
-        </div>
-        <div class="cm-carrusel__cuerpo">
-          <span class="cm-carrusel__titulo">Pizza Margherita D.O.P.</span>
-          <span class="cm-carrusel__sub">La Trattoria del Sol · Barrio Italia</span>
-          <div class="cm-carrusel__pie">
-            <span class="cm-plato__precios">
-              <strong class="cm-carrusel__precio">$8.990</strong>
-              <span class="cm-plato__precio-anterior">$11.990</span>
-            </span>
-            <span class="sm-estado sm-estado--disponible">Disponible</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="cm-carrusel__tarjeta" href="promociones.html">
-        <div class="cm-carrusel__foto">
-          <img src="../assets/img/ramen.jpg" alt="Ramen tonkotsu">
-          <span class="cm-carrusel__banda">2x1 almuerzo</span>
-          <span class="cm-carrusel__distancia">800 m</span>
-        </div>
-        <div class="cm-carrusel__cuerpo">
-          <span class="cm-carrusel__titulo">Ramen tonkotsu</span>
-          <span class="cm-carrusel__sub">Ramen Ya · Bellas Artes</span>
-          <div class="cm-carrusel__pie">
-            <strong class="cm-carrusel__precio">$9.450</strong>
-            <span class="sm-estado sm-estado--pocas">Quedan 3</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="cm-carrusel__tarjeta" href="promociones.html">
-        <div class="cm-carrusel__foto">
-          <img src="../assets/img/brunch.jpg" alt="Brunch + café de grano">
-          <span class="cm-carrusel__banda">−20% desayuno</span>
-          <span class="cm-carrusel__distancia">650 m</span>
-        </div>
-        <div class="cm-carrusel__cuerpo">
-          <span class="cm-carrusel__titulo">Brunch + café de grano</span>
-          <span class="cm-carrusel__sub">Café Alameda · Lastarria</span>
-          <div class="cm-carrusel__pie">
-            <span class="cm-plato__precios">
-              <strong class="cm-carrusel__precio">$6.800</strong>
-              <span class="cm-plato__precio-anterior">$8.500</span>
-            </span>
-            <span class="sm-estado sm-estado--disponible">Disponible</span>
-          </div>
-        </div>
-      </a>
-    </div>
+    <div class="cm-carrusel" data-render="carrusel"></div>
   </section>
 
   <section class="cm-seccion cm-seccion--lista" aria-label="Restaurantes cercanos">
     <div class="cm-seccion__cabecera">
       <h2 class="cm-seccion__titulo">Restaurantes cercanos</h2>
-      <span class="cm-seccion__nota cm-seccion__nota--grande">18 en 1 km</span>
+      <span class="cm-seccion__nota cm-seccion__nota--grande" data-render="locales-cuenta">4 en 1 km</span>
     </div>
 
-    <a class="cm-local-tarjeta" href="restaurante.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/brunapoli.jpg" alt="Plato de La Trattoria del Sol">
-        <span class="cm-distancia cm-distancia--chica">350 m</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">La Trattoria del Sol</span>
-        <span class="cm-local-tarjeta__sub">Barrio Italia · Italiana · $$</span>
-        <span class="cm-local-tarjeta__rating">
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <strong>4.8</strong> (342) · <span class="cm-promo-mini">1 promoción</span>
-        </span>
-        <div class="cm-local-tarjeta__barra">
-          <div class="cm-barra__fila">
-            <span class="cm-barra__disponible">88% de la carta disponible</span>
-            <span class="cm-barra__detalle">14 · 2 pocas</span>
-          </div>
-          <div class="cm-barra">
-            <span class="cm-barra__lleno" style="width: 80%;"></span>
-            <span class="cm-barra__pocas" style="width: 8%;"></span>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <a class="cm-local-tarjeta" href="restaurante.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/brunch.jpg" alt="Plato de Café Alameda">
-        <span class="cm-distancia cm-distancia--chica">650 m</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">Café Alameda</span>
-        <span class="cm-local-tarjeta__sub">Lastarria · Desayunos y café · $$</span>
-        <span class="cm-local-tarjeta__rating">
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <strong>4.9</strong> (512) · <span class="cm-promo-mini">1 promoción</span>
-        </span>
-        <div class="cm-local-tarjeta__barra">
-          <div class="cm-barra__fila">
-            <span class="cm-barra__disponible">92% de la carta disponible</span>
-            <span class="cm-barra__detalle">11 · 1 pocas</span>
-          </div>
-          <div class="cm-barra">
-            <span class="cm-barra__lleno" style="width: 84%;"></span>
-            <span class="cm-barra__pocas" style="width: 8%;"></span>
-          </div>
-        </div>
-      </div>
-    </a>
-
-    <a class="cm-local-tarjeta" href="restaurante.html">
-      <div class="cm-local-tarjeta__foto">
-        <img src="../assets/img/kintaro.jpg" alt="Plato de Ramen Ya">
-        <span class="cm-distancia cm-distancia--chica">800 m</span>
-      </div>
-      <div class="cm-local-tarjeta__cuerpo">
-        <span class="cm-local-tarjeta__nombre">Ramen Ya</span>
-        <span class="cm-local-tarjeta__sub">Bellas Artes · Ramen y nikkei · $$</span>
-        <span class="cm-local-tarjeta__rating">
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <strong>4.7</strong> (410) · <span class="cm-promo-mini">2 promociones</span>
-        </span>
-        <div class="cm-local-tarjeta__barra">
-          <div class="cm-barra__fila">
-            <span class="cm-barra__disponible">75% de la carta disponible</span>
-            <span class="cm-barra__detalle">9 · 3 pocas</span>
-          </div>
-          <div class="cm-barra">
-            <span class="cm-barra__lleno" style="width: 67%;"></span>
-            <span class="cm-barra__pocas" style="width: 8%;"></span>
-          </div>
-        </div>
-      </div>
-    </a>
+    <div class="cm-lista" data-render="locales"></div>
   </section>
 
   <nav class="cm-nav" aria-label="Navegación principal">
@@ -283,10 +156,18 @@
   </nav>
 
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="../assets/js/iconos.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="mapa.js"></script>
-<script>SaborMapMapa.crear('cm-mapa-hoja', { sinUbicacion: 'No vemos tu ubicación · zona de demostración' });</script>
-<script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script src="render.js"></script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapRender.explorar();
+    SaborMapMapa.crear('cm-mapa-hoja', { sinUbicacion: 'No vemos tu ubicación · zona de demostración' });
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

@@ -37,7 +37,7 @@
       <span class="cm-banda cm-banda--marca"><span data-icono="fuego" data-tamano="14"></span>−20% hoy</span>
       <span class="cm-banda cm-banda--clara"><span class="cm-estrella" data-icono="star" data-tamano="13"></span>Recomendado</span>
     </div>
-    <button type="button" class="cm-foto-detalle__favorito" aria-label="Guardar en favoritos">
+    <button type="button" class="cm-foto-detalle__favorito" data-guardar="trattoria-del-sol" aria-label="Guardar en favoritos">
       <span data-icono="corazon"></span>
     </button>
   </div>
@@ -164,7 +164,7 @@
   </section>
 
   <div class="cm-acciones-plato">
-    <button type="button" class="sm-btn sm-btn--primario sm-btn--grande">
+    <button type="button" class="sm-btn sm-btn--primario sm-btn--grande" data-guardar="trattoria-del-sol">
       <span data-icono="guardar"></span>
       Guardar en favoritos
     </button>
@@ -186,6 +186,9 @@
   </div>
 
 </div>
+<script src="../assets/js/datos-demo.js"></script>
+<script src="../assets/js/db.js"></script>
+<script src="render.js"></script>
 <script src="../assets/js/iconos.js"></script>
 <script>SaborMapIconos.pintar();</script>
 </body>

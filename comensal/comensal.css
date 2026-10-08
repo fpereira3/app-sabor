@@ -792,12 +792,12 @@ nav[aria-label="Navegación principal"] {
 .cm-local-tarjeta__rating strong { color: var(--sm-on-surface); }
 .cm-promo-mini { color: var(--sm-primary); font-weight: 700; }
 .cm-local-tarjeta__barra { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
-.cm-barra__fila { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; }
-.cm-barra__disponible { color: var(--sm-available-text); }
-.cm-barra__detalle { color: var(--sm-text-muted); }
-.cm-barra { display: flex; height: 6px; border-radius: var(--sm-radius-full); overflow: hidden; background: var(--sm-surface-container-high); }
-.cm-barra__lleno { background: var(--sm-available-dot); }
-.cm-barra__pocas { background: #E0A040; }
+.cm-progreso__fila { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; }
+.cm-progreso__disponible { color: var(--sm-available-text); }
+.cm-progreso__detalle { color: var(--sm-text-muted); }
+.cm-progreso { display: flex; height: 6px; border-radius: var(--sm-radius-full); overflow: hidden; background: var(--sm-surface-container-high); }
+.cm-progreso__lleno { background: var(--sm-available-dot); }
+.cm-progreso__pocas { background: #E0A040; }
 
 /* ---------- Navegación inferior ---------- */
 .cm-nav {
@@ -1659,4 +1659,36 @@ nav[aria-label="Navegación principal"] {
   }
   .cm-perfil__columna { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 0; }
   .cm-perfil__contenido { display: flex; flex-direction: column; gap: 14px; }
+}
+
+/* ---------- Dinámico: guardados y render desde la base ---------- */
+.cm-lista { display: flex; flex-direction: column; gap: 12px; }
+.cm-guardado-tarjeta { position: relative; }
+.cm-quitar {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--sm-border);
+  border-radius: var(--sm-radius-full);
+  background: #FFFFFF;
+  color: var(--sm-on-surface-variant);
+  cursor: pointer;
+}
+.cm-quitar:hover { color: var(--sm-sold-out-dot); }
+[data-guardar].cm-activo svg { fill: var(--sm-primary); stroke: var(--sm-primary); }
+.cm-plato__foto--vacia {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed var(--sm-outline-variant);
+  border-radius: 14px;
+  background: var(--sm-surface-container-low);
+  color: var(--sm-primary);
 }

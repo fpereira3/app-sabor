@@ -60,26 +60,14 @@
   }
 
   /* ================= Estado ================= */
-  let estado = cargar();
-
-  function cargar() {
-    try {
-      const g = localStorage.getItem(CLAVE);
-      if (g) {
-        const d = JSON.parse(g);
-        if (d && d.version === DEMO.datos.version) return d;
-      }
-    } catch (e) { /* almacenamiento no disponible: se usan los datos de ejemplo */ }
-    const d = clonar(DEMO.datos);
-    d._actualizado = new Date().toISOString();
-    return d;
-  }
+  /* La base vive en SaborMapDB (SQLite vía server.py, con reserva en
+     localStorage); se abre de forma asíncrona antes del primer render. */
+  let estado = null;
 
   function guardar() {
     estado._actualizado = new Date().toISOString();
-    try {
-      localStorage.setItem(CLAVE, JSON.stringify(estado));
-    } catch (e) {
+    const ok = SaborMapDB.guardarSlicePanel(estado);
+    if (!ok) {
       aviso('No se pudieron guardar los cambios en este navegador. Se mantendrán hasta que recargues la página.');
     }
   }
@@ -1591,13 +1579,16 @@
 
   setInterval(() => {
     const n = $('#hace-actualizado');
-    if (n) n.textContent = haceCuanto(new Date(estado._actualizado));
+    if (n && estado) n.textContent = haceCuanto(new Date(estado._actualizado));
   }, 30000);
 
   /* ================= Inicio ================= */
   Ic.pintar();
-  const inicial = rutaActual();
-  aplicarParametros(inicial.nombre, inicial.params);
-  rutaPrevia = inicial.nombre;
-  render();
+  SaborMapDB.abrirPanel().then((d) => {
+    estado = d;
+    const inicial = rutaActual();
+    aplicarParametros(inicial.nombre, inicial.params);
+    rutaPrevia = inicial.nombre;
+    render();
+  });
 })();
