@@ -2,65 +2,108 @@
 
 Prototipo de una app para descubrir restaurantes cercanos, consultar sus menús, ver la disponibilidad de cada plato en tiempo real y conocer las promociones del día.
 
-Es la fusión de dos prototipos de Stitch ("restaurant availability map guide" y "santiago food finder app"), con el sistema visual **Terracotta Epicure** del primero.
+Tiene dos vistas de la misma aplicación, con el sistema visual **Terracotta Epicure**:
+
+- **Comensal** (`comensal/`): quien busca dónde comer.
+- **Panel del local** (`local/`): el restaurante que administra su carta.
 
 > **Alcance del producto:** la app es solo informativa. No hay compras, pedidos, carrito ni reservas. Las promociones se aplican directamente en cada restaurante.
 
 ## Cómo verlo
 
-No necesita instalación ni compilación: son archivos HTML estáticos.
+No necesita instalación ni compilación. Se puede abrir `index.html` con doble clic o servirlo localmente:
 
 ```bash
-cd sabormap-prototipo
 python3 -m http.server 8000
 ```
 
-Luego abre <http://localhost:8000> en el navegador. Para verlo como en un teléfono, usa el modo de diseño adaptable de las herramientas de desarrollo (F12 y luego Ctrl+Shift+M en Firefox o Chrome).
-
-## Pantallas
-
-| Archivo | Pantalla | Viene de |
-|---|---|---|
-| `index.html` | Bienvenida y permiso de ubicación | Santiago food finder |
-| `explorar.html` | Mapa, restaurante seleccionado, promociones y lista cercana | Ambos |
-| `platos.html` | Buscador por disponibilidad con semáforo en vivo | Availability map guide |
-| `restaurante.html` | Ficha del restaurante, carta en vivo, promociones e información | Ambos |
-| `plato.html` | Detalle del plato | Santiago food finder |
-| `promociones.html` | Promociones cercanas | Santiago food finder |
-| `resenas.html` | Reseñas y fotos | Availability map guide |
-
-Flujo principal: `index` → `explorar` → `restaurante` → `plato`. La barra inferior lleva a Platos y Promos. Guardados y Perfil todavía no tienen pantalla.
+Luego abre <http://localhost:8000>. La portada enlaza las dos vistas. Para ver la app como en un teléfono, usa el modo de diseño adaptable del navegador (F12 y luego Ctrl+Shift+M).
 
 ## Estructura
 
 ```
 sabormap-prototipo/
-├── index.html y demás pantallas
-├── assets/
-│   ├── base.css        estructura de la columna móvil y barras fijas
+├── index.html              portada: elige la vista
+├── assets/                 compartido por las dos vistas
+│   ├── base.css            reinicio, tipografía y foco
+│   ├── componentes.css     botones, chips, pastillas de estado, campos, interruptores, diálogos, avisos
 │   ├── logo.svg
-│   └── img/            fotos (recortes de las capturas de Stitch)
-└── design/
-    ├── tokens.json     colores, estados de disponibilidad, tipografía, radios, sombras
-    ├── tokens.css      los mismos tokens como variables CSS (--sm-*)
-    └── DESIGN.md       guía original del sistema Terracotta Epicure
+│   ├── img/                fotos de ejemplo
+│   └── js/
+│       ├── iconos.js       iconos de línea y logo
+│       └── datos-demo.js   local de ejemplo: carta, ingredientes, promociones e información
+├── design/                 compartido
+│   ├── tokens.json         colores, estados de disponibilidad, tipografía, radios, sombras
+│   ├── tokens.css          los mismos tokens como variables CSS (--sm-*)
+│   └── DESIGN.md           guía original del sistema Terracotta Epicure
+├── comensal/               vista comensal (7 pantallas estáticas)
+│   ├── index.html, explorar.html, platos.html, restaurante.html,
+│   │   plato.html, promociones.html, resenas.html
+│   └── comensal.css
+└── local/                  panel del local (aplicación de una página)
+    ├── index.html
+    ├── local.css
+    └── local.js
 ```
 
-## Notas para la implementación
+Todas las rutas son relativas (`../assets/`, `../design/`), así que la carpeta `local/` se puede renombrar sin tocar nada más. Solo hay que actualizar los enlaces que apuntan a ella desde la portada (`index.html`).
 
-- **Estilos en línea:** cada pantalla tiene sus estilos dentro del HTML porque vienen del lienzo de diseño. Sirven como referencia visual exacta, pero para la app real conviene convertirlos en componentes y usar `design/tokens.*`.
-- **Fotos:** son de baja resolución y solo sirven de referencia. Hay que reemplazarlas por fotos reales de cada restaurante.
-- **Mapa:** es una ilustración en SVG. En la app real se reemplaza por un mapa interactivo (MapLibre, Leaflet, Google Maps o Mapbox) con marcadores personalizados.
-- **Datos:** todos los restaurantes, platos, precios y reseñas son ficticios.
+## Vista comensal
 
-### Componentes reutilizables
+| Archivo | Pantalla |
+|---|---|
+| `index.html` | Bienvenida y permiso de ubicación |
+| `explorar.html` | Mapa, restaurante seleccionado, promociones y lista cercana |
+| `platos.html` | Buscador por disponibilidad con semáforo en vivo |
+| `restaurante.html` | Ficha del restaurante, carta en vivo, promociones e información |
+| `plato.html` | Detalle del plato |
+| `promociones.html` | Promociones cercanas |
+| `resenas.html` | Reseñas y fotos |
 
-Barra superior con ubicación, buscador, chips de filtro, pastilla de estado (semáforo), tarjeta de restaurante, tarjeta de plato, tarjeta de promoción, fila de la carta, tarjeta de reseña, barra inferior de navegación y marcador del mapa.
+Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Son pantallas estáticas con estilos en línea, tal como salieron del lienzo de diseño.
 
-### Modelo de datos sugerido
+## Panel del local
 
-- **Restaurante:** nombre, barrio, dirección, coordenadas, tipo de cocina, rango de precio, horario, valoración, fotos.
-- **Plato:** restaurante, nombre, descripción, categoría, precio, etiquetas (vegetariano, picante, sin gluten, alérgenos), foto.
-- **Disponibilidad:** plato, estado (`disponible` | `pocas` | `agotado` | `sin_info`), porciones restantes (opcional), fecha de actualización, vuelve a estar disponible (opcional).
-- **Promoción:** restaurante, plato (opcional), tipo (porcentaje, 2x1, menú), precio promocional, vigencia, condiciones.
-- **Reseña:** restaurante, autor, puntuación, texto, fotos, platos mencionados con su estado, si el semáforo fue preciso.
+Es funcional: los cambios se guardan en el navegador (`localStorage`) y se pueden deshacer desde el aviso que aparece tras cada acción. Solo administra la carta y lo asociado a ella; no incluye ventas, pedidos ni reservas.
+
+| Sección | Qué permite |
+|---|---|
+| Inicio | Marcar agotado rápido (busca un ingrediente o un plato), semáforo de la carta, ingredientes agotados, platos con pocas porciones (contador), promociones de hoy y platos sin foto |
+| Carta | Agregar, editar y eliminar platos: foto, nombre, descripción, precio, categoría, ingredientes, etiquetas, visibilidad y disponibilidad (disponible, pocas porciones con contador, agotado con hora de regreso) |
+| Ingredientes | Marcar ingredientes como agotados o disponibles, agregarlos, renombrarlos, agruparlos y eliminarlos |
+| Promociones | Crear y editar descuentos, 2x1, precios especiales y menús del día, con días, horario, fecha de término, condiciones y vista previa de cómo las ve el comensal |
+| Información del local | Datos generales, fotos y portada, horario semanal, cierre temporal, servicios y reinicio diario de disponibilidad |
+
+### Regla de disponibilidad
+
+Cada plato tiene un **estado manual**: `disponible`, `pocas` o `agotado`. El comensal ve el plato **agotado** si falta cualquiera de sus ingredientes, sin importar el estado manual. Al reponer el ingrediente, el plato vuelve a su estado manual.
+
+Ejemplo con los datos de prueba: al marcar «Pescado blanco» como agotado, se agotan automáticamente el carpaccio, los ravioles y el pescado del día. También se puede agotar un plato puntual, como el tiramisú, sin tocar sus ingredientes.
+
+La lógica está en `efectivo()` dentro de `local/local.js`.
+
+Otras reglas del prototipo:
+- Si las porciones de un plato llegan a cero, pasa a agotado.
+- Una promoción asociada a un plato agotado u oculto deja de mostrarse. Lo mismo ocurre con todas las promociones si el local está cerrado temporalmente.
+- El botón «Restablecer datos de prueba» vuelve a los datos de `assets/js/datos-demo.js`.
+
+## Modelo de datos
+
+El modelo completo, con ejemplos, está en `assets/js/datos-demo.js`:
+
+- **Local:** nombre, descripción, tipo de cocina, rango y precios por persona, dirección, teléfono, web, fotos y portada, horario por día, cierre temporal, servicios y reinicio diario.
+- **Categoría** y **grupo de ingredientes:** id y nombre.
+- **Ingrediente:** nombre, grupo, disponible.
+- **Plato:** nombre, descripción, categoría, precio, foto, ingredientes, etiquetas, estado manual, porciones restantes, hora de regreso, visible.
+- **Promoción:** título, tipo (`porcentaje` | `2x1` | `precio` | `menu`), valor, plato asociado (opcional), días, horario o todo el día, fecha de término, condiciones, activa.
+
+## Pendiente para la versión real
+
+- Conectar las dos vistas a un backend común. Hoy el panel guarda en el navegador y la vista comensal muestra datos fijos, así que los cambios del panel no se reflejan en ella.
+- Pasar la vista comensal a componentes que usen `assets/componentes.css` y los tokens.
+- Reemplazar el mapa ilustrado por un mapa interactivo (MapLibre, Leaflet, Google Maps o Mapbox).
+- Reemplazar las fotos de ejemplo, que son de baja resolución.
+- Ejecutar el reinicio diario de disponibilidad en el servidor (en el prototipo la opción solo se guarda).
+- Agregar autenticación para que cada local administre solo su carta.
+
+Todos los restaurantes, platos, precios y reseñas son ficticios.
