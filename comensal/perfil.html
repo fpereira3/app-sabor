@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Perfil · SaborMap</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../design/tokens.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/componentes.css">
+<link rel="stylesheet" href="comensal.css">
+</head>
+<body>
+<div class="app app--perfil">
+
+  <header class="cm-barra">
+    <a class="cm-barra__volver" href="explorar.html" aria-label="Volver">
+      <span data-icono="arrowLeft" data-tamano="22"></span>
+    </a>
+    <div class="cm-barra__textos">
+      <h1 class="cm-barra__titulo">Perfil</h1>
+      <p class="cm-barra__subtitulo">Valentina Rojas · Santiago Centro</p>
+    </div>
+    <div class="cm-barra__acciones"></div>
+  </header>
+
+  <div class="cm-perfil">
+
+    <div class="cm-perfil__columna">
+      <section class="sm-tarjeta cm-perfil__tarjeta" aria-label="Datos de la cuenta">
+        <img class="cm-perfil__avatar" src="../assets/img/avatar.jpg" alt="Foto de Valentina Rojas">
+        <div class="cm-perfil__identidad">
+          <h2 class="cm-perfil__nombre">Valentina Rojas</h2>
+          <span class="cm-perfil__detalle">Comensal desde marzo de 2024 · Santiago Centro</span>
+        </div>
+        <div class="cm-perfil__botones">
+          <button type="button" class="sm-btn sm-btn--secundario sm-btn--chico">Editar perfil</button>
+          <button type="button" class="sm-btn sm-btn--texto sm-btn--chico">Cerrar sesión</button>
+        </div>
+      </section>
+
+      <div class="cm-perfil__estadisticas">
+        <div class="cm-dato">
+          <span class="cm-dato__clave">GUARDADOS</span>
+          <span class="cm-dato__valor">12 locales</span>
+        </div>
+        <div class="cm-dato">
+          <span class="cm-dato__clave">RESEÑAS</span>
+          <span class="cm-dato__valor">8 escritas</span>
+        </div>
+        <div class="cm-dato">
+          <span class="cm-dato__clave">PLATOS</span>
+          <span class="cm-dato__valor">46 probados</span>
+        </div>
+      </div>
+
+      <p class="cm-bienvenida__nota">
+        <span data-icono="escudo" data-tamano="16"></span>
+        Tu ubicación solo se usa mientras la app está abierta. Puedes cambiarlo en cualquier momento.
+      </p>
+    </div>
+
+    <div class="cm-perfil__contenido">
+      <section class="cm-ficha" aria-label="Avisos">
+        <h2 class="cm-ficha__titulo">Avisos</h2>
+
+        <div class="cm-ajuste">
+          <div class="cm-ficha__textos">
+            <span class="cm-ficha__clave">Plato guardado disponible</span>
+            <span class="cm-ficha__valor">Te avisamos cuando un plato que guardaste vuelve a la carta.</span>
+          </div>
+          <label class="sm-switch sm-switch--marca">
+            <input type="checkbox" role="switch" checked aria-label="Avisar cuando un plato guardado vuelva a estar disponible">
+            <span class="sm-switch__pista"></span>
+          </label>
+        </div>
+
+        <div class="cm-ajuste">
+          <div class="cm-ficha__textos">
+            <span class="cm-ficha__clave">Promociones cercanas</span>
+            <span class="cm-ficha__valor">Novedades de locales a menos de 1 km durante el día.</span>
+          </div>
+          <label class="sm-switch sm-switch--marca">
+            <input type="checkbox" role="switch" checked aria-label="Avisar de promociones cercanas">
+            <span class="sm-switch__pista"></span>
+          </label>
+        </div>
+
+        <div class="cm-ajuste">
+          <div class="cm-ficha__textos">
+            <span class="cm-ficha__clave">Cartas que sigo</span>
+            <span class="cm-ficha__valor">Cuando un restaurante guardado actualiza su menú.</span>
+          </div>
+          <label class="sm-switch sm-switch--marca">
+            <input type="checkbox" role="switch" aria-label="Avisar cuando una carta seguida se actualiza">
+            <span class="sm-switch__pista"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="cm-ficha" aria-label="Preferencias de exploración">
+        <h2 class="cm-ficha__titulo">Preferencias</h2>
+
+        <div class="cm-ajuste">
+          <div class="cm-ficha__textos">
+            <span class="cm-ficha__clave">Ocultar platos agotados</span>
+            <span class="cm-ficha__valor">Las listas muestran solo lo disponible hoy.</span>
+          </div>
+          <label class="sm-switch">
+            <input type="checkbox" role="switch" checked aria-label="Ocultar platos agotados">
+            <span class="sm-switch__pista"></span>
+          </label>
+        </div>
+
+        <div class="cm-ajuste">
+          <div class="cm-ficha__textos">
+            <span class="cm-ficha__clave">Solo locales abiertos</span>
+            <span class="cm-ficha__valor">Se excluyen los que ya cerraron o están en cierre temporal.</span>
+          </div>
+          <label class="sm-switch">
+            <input type="checkbox" role="switch" aria-label="Mostrar solo locales abiertos">
+            <span class="sm-switch__pista"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="cm-perfil__guardados" aria-label="Locales guardados">
+        <h2 class="cm-seccion-plato__titulo" id="guardados">Guardados</h2>
+
+        <a class="cm-local-tarjeta" href="restaurante.html">
+          <div class="cm-local-tarjeta__foto">
+            <img src="../assets/img/brunapoli.jpg" alt="Plato de La Trattoria del Sol">
+            <span class="cm-distancia cm-distancia--chica">350 m</span>
+          </div>
+          <div class="cm-local-tarjeta__cuerpo">
+            <span class="cm-local-tarjeta__nombre">La Trattoria del Sol</span>
+            <span class="cm-local-tarjeta__sub">Barrio Italia · Italiana · $$</span>
+            <span class="cm-local-tarjeta__rating">
+              <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
+              <strong>4.8</strong> (342) · <span class="cm-promo-mini">1 promoción</span>
+            </span>
+            <div class="cm-local-tarjeta__barra">
+              <div class="cm-barra__fila">
+                <span class="cm-barra__disponible">88% de la carta disponible</span>
+                <span class="cm-barra__detalle">14 · 2 pocas</span>
+              </div>
+              <div class="cm-barra">
+                <span class="cm-barra__lleno" style="width: 80%;"></span>
+                <span class="cm-barra__pocas" style="width: 8%;"></span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="cm-local-tarjeta" href="restaurante.html">
+          <div class="cm-local-tarjeta__foto">
+            <img src="../assets/img/brunch.jpg" alt="Plato de Café Alameda">
+            <span class="cm-distancia cm-distancia--chica">650 m</span>
+          </div>
+          <div class="cm-local-tarjeta__cuerpo">
+            <span class="cm-local-tarjeta__nombre">Café Alameda</span>
+            <span class="cm-local-tarjeta__sub">Lastarria · Desayunos y café · $$</span>
+            <span class="cm-local-tarjeta__rating">
+              <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
+              <strong>4.9</strong> (512) · <span class="cm-promo-mini">1 promoción</span>
+            </span>
+            <div class="cm-local-tarjeta__barra">
+              <div class="cm-barra__fila">
+                <span class="cm-barra__disponible">92% de la carta disponible</span>
+                <span class="cm-barra__detalle">11 · 1 pocas</span>
+              </div>
+              <div class="cm-barra">
+                <span class="cm-barra__lleno" style="width: 84%;"></span>
+                <span class="cm-barra__pocas" style="width: 8%;"></span>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a class="cm-local-tarjeta" href="restaurante.html">
+          <div class="cm-local-tarjeta__foto">
+            <img src="../assets/img/kintaro.jpg" alt="Plato de Ramen Ya">
+            <span class="cm-distancia cm-distancia--chica">800 m</span>
+          </div>
+          <div class="cm-local-tarjeta__cuerpo">
+            <span class="cm-local-tarjeta__nombre">Ramen Ya</span>
+            <span class="cm-local-tarjeta__sub">Bellas Artes · Ramen y nikkei · $$</span>
+            <span class="cm-local-tarjeta__rating">
+              <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
+              <strong>4.7</strong> (410) · <span class="cm-promo-mini">2 promociones</span>
+            </span>
+            <div class="cm-local-tarjeta__barra">
+              <div class="cm-barra__fila">
+                <span class="cm-barra__disponible">75% de la carta disponible</span>
+                <span class="cm-barra__detalle">9 · 3 pocas</span>
+              </div>
+              <div class="cm-barra">
+                <span class="cm-barra__lleno" style="width: 67%;"></span>
+                <span class="cm-barra__pocas" style="width: 8%;"></span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </section>
+    </div>
+
+  </div>
+
+  <nav class="cm-nav" aria-label="Navegación principal">
+    <a class="cm-nav__item" href="explorar.html">
+      <span class="cm-nav__burbuja"><span data-icono="mapa" data-tamano="21"></span></span>
+      <span class="cm-nav__texto">Explorar</span>
+    </a>
+    <a class="cm-nav__item" href="platos.html">
+      <span class="cm-nav__burbuja"><span data-icono="utensils" data-tamano="21"></span></span>
+      <span class="cm-nav__texto">Platos</span>
+    </a>
+    <a class="cm-nav__item" href="promociones.html">
+      <span class="cm-nav__burbuja"><span data-icono="promociones" data-tamano="21"></span></span>
+      <span class="cm-nav__texto">Promos</span>
+    </a>
+    <a class="cm-nav__item" href="#guardados">
+      <span class="cm-nav__burbuja"><span data-icono="guardar" data-tamano="21"></span></span>
+      <span class="cm-nav__texto">Guardados</span>
+    </a>
+    <a class="cm-nav__item" href="#" aria-current="page">
+      <span class="cm-nav__burbuja"><span data-icono="perfil" data-tamano="21"></span></span>
+      <span class="cm-nav__texto">Perfil</span>
+    </a>
+  </nav>
+
+</div>
+<script src="../assets/js/iconos.js"></script>
+<script>SaborMapIconos.pintar();</script>
+</body>
+</html>

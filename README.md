@@ -17,7 +17,7 @@ No necesita instalación ni compilación. Se puede abrir `index.html` con doble 
 python3 -m http.server 8000
 ```
 
-Luego abre <http://localhost:8000>. La portada enlaza las dos vistas. En pantallas anchas la vista comensal ocupa todo el ancho: las listas se reparten en columnas que crecen con la ventana y Explorar, la Bienvenida y el detalle de plato usan dos columnas (contenido y mapa o ficha). Para probar el recorrido en un teléfono usa el modo de diseño adaptable del navegador (F12 y luego Ctrl+Shift+M).
+Luego abre <http://localhost:8000>. La portada enlaza las dos vistas. **Importante para el aviso de ubicación:** el navegador solo lo muestra en contextos seguros, es decir, servido por `localhost` (como arriba) o por HTTPS; con doble clic en `index.html` (`file://`) la geolocalización falla sin mostrar el aviso y el mapa queda en la zona de demostración. En pantallas anchas la vista comensal ocupa todo el ancho: las listas se reparten en columnas que crecen con la ventana y Explorar, la Bienvenida y el detalle de plato usan dos columnas (contenido y mapa o ficha). Para probar el recorrido en un teléfono usa el modo de diseño adaptable del navegador (F12 y luego Ctrl+Shift+M).
 
 ## Estructura
 
@@ -36,10 +36,11 @@ sabormap-prototipo/
 │   ├── tokens.json         colores, estados de disponibilidad, tipografía, radios, sombras
 │   ├── tokens.css          los mismos tokens como variables CSS (--sm-*)
 │   └── DESIGN.md           guía original del sistema Terracotta Epicure
-├── comensal/               vista comensal (7 pantallas estáticas)
+├── comensal/               vista comensal (8 pantallas estáticas)
 │   ├── index.html, explorar.html, platos.html, restaurante.html,
-│   │   plato.html, promociones.html, resenas.html
-│   └── comensal.css
+│   │   plato.html, promociones.html, resenas.html, perfil.html
+│   ├── comensal.css
+│   └── mapa.js             mapa real de Explorar y Bienvenida (Leaflet + OpenStreetMap)
 └── local/                  panel del local (aplicación de una página)
     ├── index.html
     ├── local.css
@@ -52,13 +53,16 @@ Todas las rutas son relativas (`../assets/`, `../design/`), así que la carpeta 
 
 | Archivo | Pantalla |
 |---|---|
-| `index.html` | Bienvenida y permiso de ubicación |
+| `index.html` | Bienvenida: mapa de la zona y permiso de ubicación (el botón dispara el permiso del navegador) |
 | `explorar.html` | Mapa, restaurante seleccionado, promociones y lista cercana |
 | `platos.html` | Buscador por disponibilidad con semáforo en vivo |
 | `restaurante.html` | Ficha del restaurante, carta en vivo, promociones e información |
 | `plato.html` | Detalle del plato |
 | `promociones.html` | Promociones cercanas |
 | `resenas.html` | Reseñas y fotos |
+| `perfil.html` | Perfil del comensal: datos, avisos, preferencias y guardados |
+
+Los mapas de `explorar` y de la bienvenida son reales: Leaflet con tiles de OpenStreetMap (attribution obligatoria, © OpenStreetMap contributors) y los pines del sistema visual como marcadores. La posición del comensal viene de la Geolocation API del navegador, de forma local (la coordenada no sale del dispositivo), y los locales de prueba se colocan en función de ella mediante offsets en grados, así las distancias de la demostración se ven bien en cualquier ciudad. La bienvenida pide el permiso al cargar (y su botón «Permitir ubicación» lo vuelve a intentar antes de continuar); sin permiso el mapa muestra un aviso visible y usa un centro de demostración en Santiago. Requiere conexión para los tiles; si el CDN de Leaflet no carga, la columna queda con el fondo del mapa y nada se rompe.
 
 Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Son pantallas estáticas que usan el sistema visual oficial: tokens de `design/tokens.css`, componentes `sm-*` de `assets/componentes.css`, clases de vista `cm-*` en `comensal/comensal.css` e iconos de `assets/js/iconos.js` (se pintan con `SaborMapIconos.pintar()`).
 
@@ -100,7 +104,7 @@ El modelo completo, con ejemplos, está en `assets/js/datos-demo.js`:
 ## Pendiente para la versión real
 
 - Conectar las dos vistas a un backend común. Hoy el panel guarda en el navegador y la vista comensal muestra datos fijos, así que los cambios del panel no se reflejan en ella.
-- Reemplazar el mapa ilustrado por un mapa interactivo (MapLibre, Leaflet, Google Maps o Mapbox).
+- El mapa de Explorar usa el servidor de tiles público de OpenStreetMap, válido solo para demostración; para la versión real conviene un proveedor de tiles propio y coordenadas reales de los locales.
 - Reemplazar las fotos de ejemplo, que son de baja resolución.
 - Ejecutar el reinicio diario de disponibilidad en el servidor (en el prototipo la opción solo se guarda).
 - Agregar autenticación para que cada local administre solo su carta.
