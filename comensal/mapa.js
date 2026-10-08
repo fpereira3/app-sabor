@@ -83,6 +83,7 @@
           l.comensal.valoracion + ' · ' + DB.resumenLocal(l.id).pct + '% disponible</span>'
         : '<span class="cm-mapa__valor"><span></span>' + l.comensal.valoracion + '</span>';
       pines.push({
+        id: l.id,
         nombre: l.local.nombre,
         sub: l.local.cocina + ' · ' + distanciaTexto(l.comensal.distancia),
         glifo: GLIFOS[l.comensal.glifo] || GLIFOS.pizza,
@@ -98,6 +99,7 @@
     var promo = DB.promosActivas(activo.id).filter(function (p) { return !p.platoId; })[0];
     if (promo) {
       pines.push({
+        id: activo.id,
         nombre: promo.titulo,
         sub: activo.local.nombre + ' · ' + distanciaTexto(activo.comensal.distancia),
         glifo: GLIFOS.etiqueta,
@@ -154,7 +156,7 @@
           marcador.bindPopup(
             '<div class="cm-mapa-pop"><strong>' + m.nombre + '</strong>' +
             '<span>' + m.sub + '</span>' +
-            '<a href="restaurante.html">Ver carta</a></div>'
+            '<a href="restaurante.html?id=' + encodeURIComponent(m.id) + '">Ver carta</a></div>'
           );
         }
         capa.locales.push(marcador);

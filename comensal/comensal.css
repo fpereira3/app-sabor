@@ -354,11 +354,28 @@ nav[aria-label="Navegación principal"] {
 .cm-semaforo__leyenda { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
 .cm-semaforo__clave { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--sm-on-surface-variant); }
 .cm-semaforo__clave strong { color: var(--sm-on-surface); }
-.cm-semaforo__clave > span { width: 9px; height: 9px; border-radius: var(--sm-radius-full); flex-shrink: 0; }
+.cm-semaforo__clave > span:first-child { width: 9px; height: 9px; border-radius: var(--sm-radius-full); flex-shrink: 0; }
 .cm-semaforo__clave--verde > span { background: var(--sm-available-dot); }
 .cm-semaforo__clave--ambar > span { background: var(--sm-low-dot); }
 .cm-semaforo__clave--rojo > span { background: var(--sm-sold-out-dot); }
-.cm-semaforo__clave--gris > span { background: var(--sm-unknown-dot); }
+.cm-semaforo__clave--gris > span:first-child { background: var(--sm-unknown-dot); }
+
+/* Línea "N de M platos disponibles" bajo la leyenda. */
+.cm-semaforo__disponibles {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--sm-available-text);
+}
+.cm-semaforo__disponibles > span:first-child {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--sm-radius-full);
+  background: var(--sm-available-dot);
+  flex-shrink: 0;
+}
 
 /* ---------- Filtros y lista de platos ---------- */
 .cm-filtros { display: flex; gap: 8px; padding: 14px 16px 4px; overflow: hidden; }
@@ -1692,3 +1709,17 @@ nav[aria-label="Navegación principal"] {
   background: var(--sm-surface-container-low);
   color: var(--sm-primary);
 }
+
+/* ---------- Detalle del plato: caja de disponibilidad por estado ---------- */
+.cm-aviso-disponibilidad--disponible { background: var(--sm-available-background); border-color: #9ADFC0; }
+.cm-aviso-disponibilidad--disponible .cm-aviso-disponibilidad__titulo,
+.cm-aviso-disponibilidad--disponible .cm-aviso-disponibilidad__nota,
+.cm-aviso-disponibilidad--disponible .cm-aviso-disponibilidad__detalle { color: var(--sm-available-text); }
+.cm-aviso-disponibilidad--disponible .cm-aviso-disponibilidad__nota svg { color: var(--sm-available-text); }
+.cm-aviso-disponibilidad--disponible .cm-aviso-disponibilidad__punto { background: var(--sm-available-dot); }
+.cm-aviso-disponibilidad--agotado { background: var(--sm-sold-out-background); border-color: #F2C4BE; }
+.cm-aviso-disponibilidad--agotado .cm-aviso-disponibilidad__titulo,
+.cm-aviso-disponibilidad--agotado .cm-aviso-disponibilidad__nota,
+.cm-aviso-disponibilidad--agotado .cm-aviso-disponibilidad__detalle { color: var(--sm-sold-out-text); }
+.cm-aviso-disponibilidad--agotado .cm-aviso-disponibilidad__nota svg { color: var(--sm-sold-out-text); }
+.cm-aviso-disponibilidad--agotado .cm-aviso-disponibilidad__punto { background: var(--sm-sold-out-dot); }

@@ -16,12 +16,12 @@
 <div class="app app--plato">
 
   <header class="cm-barra">
-    <a class="cm-barra__volver" href="restaurante.html" aria-label="Volver">
+    <a class="cm-barra__volver" data-render="volver" href="restaurante.html" aria-label="Volver">
       <span data-icono="arrowLeft" data-tamano="22"></span>
     </a>
     <div class="cm-barra__textos">
-      <h1 class="cm-barra__titulo">Pizza Diavola Piccante</h1>
-      <p class="cm-barra__subtitulo">La Trattoria del Sol · Quedan 4 porciones hoy</p>
+      <h1 class="cm-barra__titulo" data-render="barra-titulo">Cargando…</h1>
+      <p class="cm-barra__subtitulo" data-render="barra-subtitulo"></p>
     </div>
     <div class="cm-barra__acciones">
       <button type="button" class="cm-btn-icono" aria-label="Compartir plato">
@@ -31,158 +31,68 @@
   </header>
 
   <div class="cm-detalle__principal">
-  <div class="cm-foto-detalle">
-    <img src="../assets/img/diavola.jpg" alt="Pizza Diavola con salame picante y albahaca">
-    <div class="cm-foto-detalle__bandas">
-      <span class="cm-banda cm-banda--marca"><span data-icono="fuego" data-tamano="14"></span>−20% hoy</span>
-      <span class="cm-banda cm-banda--clara"><span class="cm-estrella" data-icono="star" data-tamano="13"></span>Recomendado</span>
+    <div class="cm-foto-detalle">
+      <img data-render="hero" src="../assets/img/diavola.jpg" alt="">
+      <div class="cm-foto-detalle__bandas" data-render="bandas"></div>
+      <button type="button" class="cm-foto-detalle__favorito" data-guardar="" aria-label="Guardar en favoritos">
+        <span data-icono="corazon"></span>
+      </button>
     </div>
-    <button type="button" class="cm-foto-detalle__favorito" data-guardar="trattoria-del-sol" aria-label="Guardar en favoritos">
-      <span data-icono="corazon"></span>
-    </button>
-  </div>
 
-  <div class="cm-encabezado-plato">
-    <h2 class="cm-encabezado__titulo">Pizza Diavola Piccante</h2>
-    <div class="cm-precios-plato">
-      <strong class="cm-precios-plato__actual">$9.990</strong>
-      <span class="cm-precios-plato__anterior">$12.500</span>
-      <span class="cm-precios-plato__ahorro">Ahorras $2.510</span>
+    <div class="cm-encabezado-plato">
+      <h2 class="cm-encabezado__titulo" data-render="nombre"></h2>
+      <div class="cm-precios-plato" data-render="precios"></div>
+      <p class="cm-encabezado-plato__nota">Precio de referencia publicado por el restaurante.</p>
     </div>
-    <p class="cm-encabezado-plato__nota">Precio de referencia publicado por el restaurante.</p>
-  </div>
 
-  <a class="cm-enlace-local" href="restaurante.html">
-    <span class="cm-promo__icono"><span data-icono="local" data-tamano="22"></span></span>
-    <span class="cm-enlace-local__textos">
-      <span class="cm-enlace-local__nombre">La Trattoria del Sol</span>
-      <span class="cm-enlace-local__sub">Barrio Italia · a 350 m de ti · abierto hasta 23:00</span>
-    </span>
-    <span class="cm-enlace-local__chev" data-icono="chevRight"></span>
-  </a>
+    <a class="cm-enlace-local" data-render="enlace-local" href="restaurante.html">
+      <span class="cm-promo__icono"><span data-icono="local" data-tamano="22"></span></span>
+      <span class="cm-enlace-local__textos">
+        <span class="cm-enlace-local__nombre" data-render="enlace-nombre"></span>
+        <span class="cm-enlace-local__sub" data-render="enlace-sub"></span>
+      </span>
+      <span class="cm-enlace-local__chev" data-icono="chevRight"></span>
+    </a>
 
-  <section class="cm-aviso-disponibilidad" aria-label="Disponibilidad">
-    <h2 class="cm-aviso-disponibilidad__titulo">
-      <span class="cm-aviso-disponibilidad__punto"></span>
-      Quedan 4 porciones hoy
-    </h2>
-    <span class="cm-aviso-disponibilidad__nota">
-      <span data-icono="clock" data-tamano="15"></span>
-      Actualizado hace 5 min por el personal de cocina
-    </span>
-    <span class="cm-aviso-disponibilidad__nota">
-      <span data-icono="info" data-tamano="15"></span>
-      Suele agotarse antes de las 21:00
-    </span>
-    <p class="cm-aviso-disponibilidad__detalle">La disponibilidad puede cambiar rápidamente. Activa un aviso si quieres saber cuándo vuelve.</p>
-  </section>
+    <section class="cm-aviso-disponibilidad" data-render="disponibilidad" aria-label="Disponibilidad"></section>
+
+    <section class="cm-seccion-plato" data-render="caracteristicas-wrap" aria-label="Características">
+      <div class="cm-seccion__cabecera">
+        <h2 class="cm-seccion-plato__titulo">Características</h2>
+      </div>
+      <div class="cm-atributos" data-render="caracteristicas"></div>
+    </section>
+
+    <section class="cm-preparacion" aria-label="Preparación">
+      <h2 class="cm-seccion-plato__titulo cm-titulo-con-icono">
+        <span data-icono="utensils"></span>
+        Preparación
+      </h2>
+      <p class="cm-preparacion__texto" data-render="preparacion"></p>
+    </section>
   </div>
 
   <div class="cm-detalle__contenido">
-  <section class="cm-seccion-plato" aria-label="Características">
-    <div class="cm-seccion__cabecera">
-      <h2 class="cm-seccion-plato__titulo">Características</h2>
-    </div>
-    <div class="cm-atributos">
-      <span class="cm-atributo"><span data-icono="fuego" data-tamano="15"></span>Picante moderado</span>
-      <span class="cm-atributo"><span data-icono="clock" data-tamano="15"></span>Masa madre de 48 h</span>
-      <span class="cm-atributo"><span data-icono="info" data-tamano="15"></span>Contiene lácteos</span>
-      <span class="cm-atributo cm-atributo--disponible"><span data-icono="check" data-tamano="15"></span>Opción sin gluten</span>
-    </div>
-  </section>
-
-  <section class="cm-preparacion" aria-label="Preparación">
-    <h2 class="cm-seccion-plato__titulo cm-titulo-con-icono">
-      <span data-icono="utensils"></span>
-      Preparación
-    </h2>
-    <p class="cm-preparacion__texto">Elaborada al estilo napolitano con salsa de tomate San Marzano, mozzarella fior di latte, salame picante curado y un toque de aceite infusionado con peperoncino. Se termina con hojas de albahaca fresca.</p>
-    <div class="cm-preparacion__datos">
-      <div class="cm-dato">
-        <span class="cm-dato__clave">COCCIÓN</span>
-        <span class="cm-dato__valor">Horno de leña</span>
-      </div>
-      <div class="cm-dato">
-        <span class="cm-dato__clave">TAMAÑO</span>
-        <span class="cm-dato__valor">33 cm, 1 a 2 personas</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="cm-seccion-plato" aria-label="Opiniones sobre este plato">
-    <div class="cm-seccion__cabecera">
-      <h2 class="cm-seccion-plato__titulo">Opiniones sobre este plato</h2>
-      <span class="cm-valoracion">
-        <span class="cm-estrella" data-icono="star" data-tamano="14"></span>
-        4.9 <span class="cm-valoracion__total">(84)</span>
-      </span>
-    </div>
-
-    <article class="cm-opinion">
-      <div class="cm-opinion__fila">
-        <span class="cm-opinion__avatar">SM</span>
-        <span class="cm-opinion__textos">
-          <span class="cm-opinion__nombre">Sofía M.</span>
-          <span class="cm-opinion__fecha">Ayer · visita verificada</span>
-        </span>
-        <span class="cm-opinion__estrellas">
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-        </span>
-      </div>
-      <p class="cm-opinion__texto">El picante es justo y la masa muy liviana. Los ingredientes se sienten frescos.</p>
-      <button type="button" class="cm-opinion__util">
-        <span data-icono="util" data-tamano="14"></span>
-        Útil (18)
+    <div class="cm-acciones-plato">
+      <button type="button" class="sm-btn sm-btn--primario sm-btn--grande" data-guardar="">
+        <span data-icono="guardar"></span>
+        Guardar en favoritos
       </button>
-    </article>
-
-    <article class="cm-opinion">
-      <div class="cm-opinion__fila">
-        <span class="cm-opinion__avatar cm-opinion__avatar--ambar">CP</span>
-        <span class="cm-opinion__textos">
-          <span class="cm-opinion__nombre">Cristóbal P.</span>
-          <span class="cm-opinion__fecha">Hace 3 días · visita verificada</span>
-        </span>
-        <span class="cm-opinion__estrellas">
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-          <span class="cm-estrella" data-icono="star" data-tamano="13"></span>
-        </span>
+      <div class="cm-acciones-plato__fila">
+        <button type="button" class="sm-btn sm-btn--secundario cm-btn-con-icono-marca">
+          <span data-icono="destino" data-tamano="18"></span>
+          Cómo llegar
+        </button>
+        <button type="button" class="sm-btn sm-btn--secundario cm-btn-con-icono-marca">
+          <span data-icono="campana" data-tamano="18"></span>
+          Avisarme
+        </button>
       </div>
-      <p class="cm-opinion__texto">Llegamos a las 20:30 y alcanzamos una de las últimas porciones. Bien que la app avisara que quedaban pocas.</p>
-      <button type="button" class="cm-opinion__util">
-        <span data-icono="util" data-tamano="14"></span>
-        Útil (11)
-      </button>
-    </article>
-  </section>
-
-  <div class="cm-acciones-plato">
-    <button type="button" class="sm-btn sm-btn--primario sm-btn--grande" data-guardar="trattoria-del-sol">
-      <span data-icono="guardar"></span>
-      Guardar en favoritos
-    </button>
-    <div class="cm-acciones-plato__fila">
-      <button type="button" class="sm-btn sm-btn--secundario cm-btn-con-icono-marca">
-        <span data-icono="destino" data-tamano="18"></span>
-        Cómo llegar
-      </button>
-      <button type="button" class="sm-btn sm-btn--secundario cm-btn-con-icono-marca">
-        <span data-icono="campana" data-tamano="18"></span>
-        Avisarme
-      </button>
+      <a class="sm-btn sm-btn--texto" data-render="carta-link" href="restaurante.html">
+        <span data-render="carta-link-texto"></span>
+        <span data-icono="arrowRight" data-tamano="16"></span>
+      </a>
     </div>
-    <a class="sm-btn sm-btn--texto" href="restaurante.html">
-      Ver la carta completa de La Trattoria del Sol
-      <span data-icono="arrowRight" data-tamano="16"></span>
-    </a>
-  </div>
   </div>
 
 </div>
@@ -190,6 +100,11 @@
 <script src="../assets/js/db.js"></script>
 <script src="render.js"></script>
 <script src="../assets/js/iconos.js"></script>
-<script>SaborMapIconos.pintar();</script>
+<script>
+  SaborMapDB.listo().then(function () {
+    SaborMapRender.plato();
+    SaborMapIconos.pintar();
+  });
+</script>
 </body>
 </html>

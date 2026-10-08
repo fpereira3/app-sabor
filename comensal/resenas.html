@@ -16,12 +16,12 @@
 <div class="app app--resenas">
 
   <header class="cm-barra">
-    <a class="cm-barra__volver" href="restaurante.html" aria-label="Volver">
+    <a class="cm-barra__volver" data-render="volver" href="restaurante.html" aria-label="Volver">
       <span data-icono="arrowLeft" data-tamano="22"></span>
     </a>
     <div class="cm-barra__textos">
       <h1 class="cm-barra__titulo">Reseñas y fotos</h1>
-      <p class="cm-barra__subtitulo">La Trattoria del Sol · 4.8 (342 reseñas)</p>
+      <p class="cm-barra__subtitulo" data-render="barra-subtitulo"></p>
     </div>
     <div class="cm-barra__acciones">
       <button type="button" class="cm-btn-icono" aria-label="Compartir">
@@ -33,14 +33,14 @@
   <div class="cm-pantalla cm-pantalla--resenas">
 
     <div class="cm-resenas-local">
-      <span class="cm-resenas-local__kicker">LA TRATTORIA DEL SOL</span>
-      <span class="cm-resenas-local__sub">Barrio Italia · Italiana</span>
+      <span class="cm-resenas-local__kicker" data-render="kicker"></span>
+      <span class="cm-resenas-local__sub" data-render="sub"></span>
     </div>
 
     <section class="cm-valoraciones" aria-label="Resumen de valoraciones">
       <div class="cm-valoraciones__fila">
         <div class="cm-valoraciones__media">
-          <span class="cm-valoraciones__nota">4.8</span>
+          <span class="cm-valoraciones__nota" data-render="media-nota"></span>
           <span class="cm-valoraciones__estrellas">
             <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
             <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
@@ -48,7 +48,7 @@
             <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
             <span class="cm-estrella" data-icono="star" data-tamano="12"></span>
           </span>
-          <span class="cm-valoraciones__total">342 reseñas</span>
+          <span class="cm-valoraciones__total" data-render="media-total"></span>
         </div>
         <div class="cm-valoraciones__barras">
           <div class="cm-barra-estrella">

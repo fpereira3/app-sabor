@@ -20,8 +20,8 @@
       <span data-icono="arrowLeft" data-tamano="22"></span>
     </a>
     <div class="cm-barra__textos">
-      <h1 class="cm-barra__titulo">La Trattoria del Sol</h1>
-      <p class="cm-barra__subtitulo">Barrio Italia · Cocina italiana artesanal</p>
+      <h1 class="cm-barra__titulo" data-render="barra-titulo">Cargando…</h1>
+      <p class="cm-barra__subtitulo" data-render="barra-subtitulo"></p>
     </div>
     <div class="cm-barra__acciones">
       <button type="button" class="cm-btn-icono" aria-label="Compartir restaurante">
@@ -31,37 +31,37 @@
   </header>
 
   <div class="cm-foto-cabecera">
-    <img src="../assets/img/horno.jpg" alt="Pizza saliendo del horno de leña">
+    <img data-render="hero-foto" src="../assets/img/horno.jpg" alt="">
     <span class="cm-foto__cuenta">
       <span data-icono="camera" data-tamano="14"></span>
-      1/24 fotos
+      <span data-render="fotos-cuenta"></span>
     </span>
-    <span class="cm-foto__etiqueta">COCINA ITALIANA ARTESANAL</span>
+    <span class="cm-foto__etiqueta" data-render="hero-etiqueta"></span>
   </div>
 
   <div class="cm-encabezado">
     <div class="cm-encabezado__fila">
       <div class="cm-encabezado__textos">
-        <h2 class="cm-encabezado__titulo">La Trattoria del Sol</h2>
-        <span class="cm-encabezado__subtitulo">Pastas frescas y pizzas a la leña · Barrio Italia</span>
+        <h2 class="cm-encabezado__titulo" data-render="nombre"></h2>
+        <span class="cm-encabezado__subtitulo" data-render="subtitulo"></span>
       </div>
-      <a class="cm-puntuacion" href="resenas.html">
+      <a class="cm-puntuacion" data-render="puntuacion" href="resenas.html">
         <span class="cm-puntuacion__valor">
           <span class="cm-estrella" data-icono="star" data-tamano="16"></span>
-          4.8
+          <span data-render="puntuacion-valor"></span>
         </span>
-        <span class="cm-puntuacion__total">342 reseñas</span>
+        <span class="cm-puntuacion__total" data-render="puntuacion-total"></span>
       </a>
     </div>
     <div class="cm-datos">
-      <span class="sm-estado sm-estado--disponible">Abierto · cierra 23:00</span>
+      <span class="sm-estado sm-estado--disponible" data-render="estado">Abierto</span>
       <span class="cm-pastilla-dato cm-pastilla-dato--marca">
         <span data-icono="nav" data-tamano="14"></span>
-        A 350 m
+        <span data-render="distancia"></span>
       </span>
       <span class="cm-pastilla-dato">
         <span data-icono="promociones" data-tamano="14"></span>
-        $$ · $10.000–$18.000 por persona
+        <span data-render="rango"></span>
       </span>
     </div>
   </div>
@@ -79,7 +79,7 @@
       <span data-icono="share"></span>
       Compartir
     </button>
-    <button type="button" class="cm-accion">
+    <button type="button" class="cm-accion" data-render="guardar" data-guardar="">
       <span data-icono="guardar"></span>
       Guardar
     </button>
@@ -88,7 +88,7 @@
   <nav class="cm-tabs" aria-label="Secciones del restaurante">
     <a class="cm-tab" href="#carta" aria-current="page">Carta</a>
     <a class="cm-tab" href="#promos">Promociones <span class="cm-tab__cuenta">2</span></a>
-    <a class="cm-tab" href="resenas.html">Reseñas</a>
+    <a class="cm-tab" data-render="tab-resenas" href="resenas.html">Reseñas</a>
     <a class="cm-tab" href="#info">Info</a>
   </nav>
 
@@ -98,7 +98,7 @@
         <span data-icono="live" data-tamano="18"></span>
         Carta en vivo
       </span>
-      <span class="cm-semaforo__actualizada">Actualizada hace 12 min</span>
+      <span class="cm-semaforo__actualizada" data-render="actualizada">Actualizada hace un momento</span>
     </div>
     <div class="cm-semaforo__leyenda">
       <span class="cm-semaforo__clave cm-semaforo__clave--verde"><span></span><strong>Verde:</strong> Disponible hoy</span>
@@ -106,11 +106,11 @@
       <span class="cm-semaforo__clave cm-semaforo__clave--rojo"><span></span><strong>Rojo:</strong> Agotado hoy</span>
       <span class="cm-semaforo__clave cm-semaforo__clave--gris"><span></span><strong>Gris:</strong> Sin información</span>
     </div>
+    <span class="cm-semaforo__disponibles"><span></span><span data-render="disponibles"></span></span>
   </section>
 
   <div class="cm-filtros" role="group" aria-label="Filtros de la carta">
     <button type="button" class="sm-chip cm-chip--disponible">Solo disponibles</button>
-    <button type="button" class="sm-chip" aria-pressed="true">Destacados <span class="sm-chip__cuenta">5</span></button>
     <button type="button" class="sm-chip">Pastas frescas</button>
     <button type="button" class="sm-chip">Pizzas</button>
   </div>
@@ -120,57 +120,53 @@
   <section id="promos" class="cm-seccion" aria-label="Promociones de hoy">
     <div class="cm-seccion__cabecera">
       <h2 class="cm-seccion__titulo">Promociones de hoy</h2>
-      <span class="cm-seccion__nota">2 activas</span>
+      <span class="cm-seccion__nota"></span>
     </div>
-
   </section>
 
   <div class="cm-final">
-  <section class="cm-seccion cm-seccion--cita" aria-label="Opiniones destacadas">
-    <div class="cm-seccion__cabecera">
-      <h2 class="cm-seccion__titulo">Lo que dicen de la carta</h2>
-      <span class="cm-seccion__puntuacion">
-        <span class="cm-estrella" data-icono="star" data-tamano="14"></span>
-        4.8
-      </span>
-    </div>
-    <blockquote class="cm-cita">
-      <p>“La app marcaba en verde el fettuccine con burrata y efectivamente quedaba. La textura de la pasta es insuperable.”</p>
-      <footer>Camila R. · visita verificada · hace 2 días</footer>
-    </blockquote>
-    <a class="sm-btn sm-btn--secundario cm-btn-bloque" href="resenas.html">
-      <span data-icono="camera" data-tamano="18"></span>
-      Ver reseñas y fotos (342)
-    </a>
-  </section>
-
-  <section id="info" class="cm-ficha" aria-label="Información del local">
-    <h2 class="cm-ficha__titulo">Información</h2>
-
-    <div class="cm-ficha__fila">
-      <span class="cm-ficha__icono"><span data-icono="clock" data-tamano="18"></span></span>
-      <div class="cm-ficha__textos">
-        <span class="cm-ficha__clave">Horario</span>
-        <span class="cm-ficha__valor">Lunes a domingo, 12:30 a 23:00</span>
+    <section class="cm-seccion cm-seccion--cita" aria-label="Opiniones destacadas">
+      <div class="cm-seccion__cabecera">
+        <h2 class="cm-seccion__titulo">Lo que dicen de la carta</h2>
+        <span class="cm-seccion__puntuacion">
+          <span class="cm-estrella" data-icono="star" data-tamano="14"></span>
+          <span data-render="cita-valor"></span>
+        </span>
       </div>
-    </div>
+      <blockquote class="cm-cita" data-render="cita"></blockquote>
+      <a class="sm-btn sm-btn--secundario cm-btn-bloque" data-render="cita-link" href="resenas.html">
+        <span data-icono="camera" data-tamano="18"></span>
+        <span data-render="cita-link-texto"></span>
+      </a>
+    </section>
 
-    <div class="cm-ficha__fila">
-      <span class="cm-ficha__icono"><span data-icono="pin" data-tamano="18"></span></span>
-      <div class="cm-ficha__textos">
-        <span class="cm-ficha__clave">Dirección</span>
-        <span class="cm-ficha__valor">Calle Condell 1250, Barrio Italia, Providencia</span>
-      </div>
-    </div>
+    <section id="info" class="cm-ficha" aria-label="Información del local">
+      <h2 class="cm-ficha__titulo">Información</h2>
 
-    <div class="cm-ficha__fila">
-      <span class="cm-ficha__icono"><span data-icono="ingredientes" data-tamano="18"></span></span>
-      <div class="cm-ficha__textos">
-        <span class="cm-ficha__clave">Ambiente</span>
-        <span class="cm-ficha__valor">Terraza calefaccionada, admite mascotas</span>
+      <div class="cm-ficha__fila">
+        <span class="cm-ficha__icono"><span data-icono="clock" data-tamano="18"></span></span>
+        <div class="cm-ficha__textos">
+          <span class="cm-ficha__clave">Horario</span>
+          <span class="cm-ficha__valor" data-render="ficha-horario"></span>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <div class="cm-ficha__fila">
+        <span class="cm-ficha__icono"><span data-icono="pin" data-tamano="18"></span></span>
+        <div class="cm-ficha__textos">
+          <span class="cm-ficha__clave">Dirección</span>
+          <span class="cm-ficha__valor" data-render="ficha-direccion"></span>
+        </div>
+      </div>
+
+      <div class="cm-ficha__fila">
+        <span class="cm-ficha__icono"><span data-icono="ingredientes" data-tamano="18"></span></span>
+        <div class="cm-ficha__textos">
+          <span class="cm-ficha__clave">Ambiente</span>
+          <span class="cm-ficha__valor" data-render="ficha-ambiente"></span>
+        </div>
+      </div>
+    </section>
   </div>
 
 </div>

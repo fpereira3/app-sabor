@@ -64,19 +64,19 @@ Todas las rutas son relativas (`../assets/`, `../design/`), así que la carpeta 
 | Archivo | Pantalla |
 |---|---|
 | `index.html` | Bienvenida: mapa de la zona y permiso de ubicación (el botón dispara el permiso del navegador) |
-| `explorar.html` | Mapa real (OSM), local seleccionado, carrusel de promociones y lista de cercanos con el % de carta disponible de cada uno |
+| `explorar.html` | Mapa real (OSM), local seleccionado, carrusel de promociones (intercaladas por local, con su `?id=` en cada tarjeta) y lista de cercanos con el % de carta disponible de cada uno |
 | `platos.html` | Los platos mejor valorados de todas las cocinas, con semáforo en vivo y resumen global (dona y porcentajes calculados) |
-| `restaurante.html` | Ficha del restaurante, carta en vivo (semáforo y precios con promoción), promociones e información |
-| `plato.html` | Detalle del plato (única pantalla que sigue estática) |
+| `restaurante.html?id=` | Ficha de **cada** local (los 4 sembrados): foto de portada, horario real, carta en vivo con semáforo y precios con promoción, promociones, primera reseña e información |
+| `plato.html?id=&plato=` | Detalle de cualquier plato de la base: foto, precio con promoción, disponibilidad por estado (caja verde/ámbar/roja), etiquetas y enlace a su local |
 | `promociones.html` | Promociones activas de todos los locales, con la destacada del día y las demás en tarjetas |
-| `resenas.html` | Reseñas y fotos del local activo |
+| `resenas.html?id=` | Reseñas y fotos del local indicado |
 | `perfil.html` | Perfil del comensal: datos, avisos, preferencias y guardados (todo persiste en la base; quitar un guardado lo borra de verdad) |
 
 Los mapas de `explorar` y de la bienvenida son reales: Leaflet con tiles de OpenStreetMap (attribution obligatoria, © OpenStreetMap contributors) y los pines del sistema visual como marcadores. La posición del comensal viene de la Geolocation API del navegador, de forma local (la coordenada no sale del dispositivo), y los locales de prueba se colocan en función de ella mediante offsets en grados, así las distancias de la demostración se ven bien en cualquier ciudad. La bienvenida pide el permiso al cargar (y su botón «Permitir ubicación» lo vuelve a intentar antes de continuar); sin permiso el mapa muestra un aviso visible y usa un centro de demostración en Santiago. Requiere conexión para los tiles; si el CDN de Leaflet no carga, la columna queda con el fondo del mapa y nada se rompe.
 
 **Guardados y preferencias:** el ícono de marcador (Explorar, Platos y el detalle de plato) guarda o quita un local en el perfil y lo escribe en la base al instante; en Perfil se ven con su semáforo y se pueden quitar, y los interruptores de avisos y preferencias también persisten. Al recargar, todo sigue ahí.
 
-Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Seis de las pantallas (explorar, restaurante, platos, promociones, resenas y perfil) se pintan desde la base de datos con `comensal/render.js` —semáforo real, precios con promoción, guardados—; el detalle de plato sigue siendo estático. Todas usan el sistema visual oficial: tokens de `design/tokens.css`, componentes `sm-*` de `assets/componentes.css`, clases de vista `cm-*` en `comensal/comensal.css` e iconos de `assets/js/iconos.js`, y arrancan dentro de `SaborMapDB.listo().then(...)` para pintar los iconos una vez cargados los datos.
+Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Explorar es de verdad multipágina: cada tarjeta, carrusel, resultado del buscador, guardado y pin del mapa enlaza a `restaurante.html?id=<local>`, y cada plato de la carta a `plato.html?id=<local>&plato=<plato>`. Todas las pantallas menos la bienvenida se pintan desde la base de datos con `comensal/render.js` —semáforo real, precios con promoción, guardados, horario real por local—. Todas usan el sistema visual oficial: tokens de `design/tokens.css`, componentes `sm-*` de `assets/componentes.css`, clases de vista `cm-*` en `comensal/comensal.css` e iconos de `assets/js/iconos.js`, y arrancan dentro de `SaborMapDB.listo().then(...)` para pintar los iconos una vez cargados los datos.
 
 **Barras superiores, un solo estilo en todo el prototipo:** cuadradas (radio 0), a sangre de márgenes, con `border-bottom` de hairline y sombra solo en la línea inferior — tanto en el comensal (`.cm-barra` en Restaurante/Plato/Reseñas/Perfil y `.cm-cabecera` en Explorar/Platos/Promociones) como en el panel del local (`.panel-cabecera`, ahora con fondo sólido). Las subpáginas muestran título real y subtítulo de contexto (por ejemplo, «La Trattoria del Sol · Barrio Italia · Cocina italiana artesanal»), y el buscador sigue el mismo tratamiento: cuadrado, con sombra inferior y pegado a los márgenes. La familia `cm-progreso` (la pista fina de 6px de las tarjetas) es independiente de `.cm-barra`.
 

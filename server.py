@@ -302,6 +302,19 @@ class Manejador(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=RAIZ, **kwargs)
 
+    def send_header(self, keyword, value):
+        if keyword.lower() == "cache-control":
+            self._cache_enviada = True
+        super().send_header(keyword, value)
+
+    def end_headers(self):
+        """Prototipo: sin cache heurística del navegador. Sin esto, un
+        render.js viejo puede seguir sirviéndose tras cambiar el código."""
+        if not getattr(self, "_cache_enviada", False):
+            self.send_header("Cache-Control", "no-cache")
+        self._cache_enviada = False
+        super().end_headers()
+
     def _json(self, codigo, cuerpo):
         datos = json.dumps(cuerpo, ensure_ascii=False).encode("utf-8")
         self.send_response(codigo)
