@@ -17,7 +17,7 @@ No necesita instalación ni compilación. Se puede abrir `index.html` con doble 
 python3 -m http.server 8000
 ```
 
-Luego abre <http://localhost:8000>. La portada enlaza las dos vistas. Para ver la app como en un teléfono, usa el modo de diseño adaptable del navegador (F12 y luego Ctrl+Shift+M).
+Luego abre <http://localhost:8000>. La portada enlaza las dos vistas. En pantallas anchas la vista comensal ocupa todo el ancho: las listas se reparten en columnas que crecen con la ventana y Explorar, la Bienvenida y el detalle de plato usan dos columnas (contenido y mapa o ficha). Para probar el recorrido en un teléfono usa el modo de diseño adaptable del navegador (F12 y luego Ctrl+Shift+M).
 
 ## Estructura
 
@@ -60,7 +60,7 @@ Todas las rutas son relativas (`../assets/`, `../design/`), así que la carpeta 
 | `promociones.html` | Promociones cercanas |
 | `resenas.html` | Reseñas y fotos |
 
-Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Son pantallas estáticas con estilos en línea, tal como salieron del lienzo de diseño.
+Flujo principal: `index` → `explorar` → `restaurante` → `plato`. Son pantallas estáticas que usan el sistema visual oficial: tokens de `design/tokens.css`, componentes `sm-*` de `assets/componentes.css`, clases de vista `cm-*` en `comensal/comensal.css` e iconos de `assets/js/iconos.js` (se pintan con `SaborMapIconos.pintar()`).
 
 ## Panel del local
 
@@ -100,7 +100,6 @@ El modelo completo, con ejemplos, está en `assets/js/datos-demo.js`:
 ## Pendiente para la versión real
 
 - Conectar las dos vistas a un backend común. Hoy el panel guarda en el navegador y la vista comensal muestra datos fijos, así que los cambios del panel no se reflejan en ella.
-- Pasar la vista comensal a componentes que usen `assets/componentes.css` y los tokens.
 - Reemplazar el mapa ilustrado por un mapa interactivo (MapLibre, Leaflet, Google Maps o Mapbox).
 - Reemplazar las fotos de ejemplo, que son de baja resolución.
 - Ejecutar el reinicio diario de disponibilidad en el servidor (en el prototipo la opción solo se guarda).

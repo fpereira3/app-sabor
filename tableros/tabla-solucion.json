@@ -1,0 +1,100 @@
+{
+  "tablero": "Arquitectura del producto",
+  "tipo": "kanban",
+  "columnas": [
+    {
+      "nombre": "Objetivo del Producto",
+      "tarjetas": [
+        "Agilizar acceso a menús",
+        "Consultar menús actualizados de los restaurantes",
+        "Mostrar información del local y el menú"
+      ]
+    },
+    {
+      "nombre": "Perfiles de Usuario",
+      "tarjetas": [
+        "Meseros",
+        "Comensales fuera del local",
+        "Gerente del restaurante",
+        "Comensales dentro del local",
+        "Chef Principal"
+      ]
+    },
+    {
+      "nombre": "Entradas Manuales",
+      "tarjetas": [
+        "Opiniones de los comensales",
+        "Opiniones de usuarios",
+        "Precios de los platos",
+        "Fotos de los platos",
+        "Descargar o guardar un menú",
+        "Disponibilidad de un plato",
+        "Horarios e información del local",
+        "Promociones vigentes"
+      ]
+    },
+    {
+      "nombre": "Entradas Automáticas",
+      "tarjetas": [
+        "Ubicación del comensal mediante GPS",
+        "Programación de precios según la demanda",
+        "Aplicar ofertas según fecha u horario"
+      ]
+    },
+    {
+      "nombre": "Conceptos de Datos",
+      "tarjetas": [
+        "Comida",
+        "Bebestibles",
+        "Preferencia",
+        "Orden",
+        "Sucursal",
+        "Menú",
+        "Horarios",
+        "Ofertas",
+        "Ubicación",
+        "Precios"
+      ]
+    },
+    {
+      "nombre": "Visualizaciones a Partir de",
+      "tarjetas": [
+        "Documento o página web",
+        "Valoración de usuarios sobre los platos",
+        "Ofertas y precios disponibles",
+        "Ubicación en el mapa",
+        "Disponibilidad de platos en un menú",
+        "Información de los platos"
+      ]
+    },
+    {
+      "nombre": "Notificaciones",
+      "tarjetas": [
+        "Avisar sobre plato favorito",
+        "Notificar actualización del menú",
+        "Mostrar ofertas que están disponibles",
+        "Confirmación de modificación del menú"
+      ]
+    },
+    {
+      "nombre": "Procesos Autónomos",
+      "tarjetas": [
+        "Actualización del menú a nivel de usuario",
+        "Propagar cambios del menú cuando se hagan cambios",
+        "Generar y mantener registro de menú"
+      ]
+    },
+    {
+      "nombre": "Restricciones y Requisitos de Calidad",
+      "tarjetas": [
+        "Asociar ubicaciones de sucursales y del usuario",
+        "Compatibilidad multiplataforma",
+        "Interfaz de usuario simple",
+        "Bajo tiempo de respuesta",
+        "Bajo consumo de datos móviles al cargar menú",
+        "No se pueden tomar órdenes",
+        "Página pública de cada restaurante"
+      ]
+    }
+  ]
+}

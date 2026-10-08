@@ -1,0 +1,93 @@
+{
+  "tablero": "Análisis del proceso",
+  "tipo": "kanban",
+  "columnas": [
+    {
+      "nombre": "Proceso a Abordar",
+      "tarjetas": [
+        "Acceso al menú de un restaurante",
+        "Tener certidumbre sobre lo que ofrece un restaurante",
+        "Sucursal"
+      ]
+    },
+    {
+      "nombre": "Principales Actividades",
+      "tarjetas": [
+        "Búsqueda del menú",
+        "Navegar el menú",
+        "Confección de menú",
+        "Modificar o actualizar el menú",
+        "Descubrir un restaurante y abrir su menú"
+      ]
+    },
+    {
+      "nombre": "Problemas u oportunidades Identificadas",
+      "tarjetas": [
+        "Inconsistencia de menús entre sucursales",
+        "Precios desactualizados",
+        "Platos agotados o descontinuados",
+        "La modificación del menú es engorrosa",
+        "Cartas físicas en mal estado"
+      ]
+    },
+    {
+      "nombre": "Participantes del Proceso (roles)",
+      "tarjetas": [
+        "Comensales",
+        "Meseros",
+        "Chef principal",
+        "Gerente del restaurante"
+      ]
+    },
+    {
+      "nombre": "Objetivos del Proyecto",
+      "tarjetas": [
+        "Optimizar la búsqueda y visualización de un menú",
+        "Dar información al día sobre lo que ofrece un restaurante",
+        "Captura de potenciales comensales"
+      ]
+    },
+    {
+      "nombre": "Conceptos de Datos de Negocio",
+      "tarjetas": [
+        "Precios de los platos",
+        "Descuentos o promociones vigentes",
+        "Fotos de los distintos platos",
+        "Canal de acceso al menú",
+        "Categoría de cada plato",
+        "Preferencias personales de un comensal",
+        "Ubicación del local"
+      ]
+    },
+    {
+      "nombre": "Expectativas del Proceso (to-be)",
+      "tarjetas": [
+        "Actualización dinámica del menú",
+        "Reducir la carga por dudas del menú",
+        "Agilizar la atención en comensales",
+        "Agilizar el proceso de creación y edición del menú"
+      ]
+    },
+    {
+      "nombre": "Situación Actual del Proceso",
+      "tarjetas": [
+        "Proveedores de menús interactivos web",
+        "Carta física",
+        "Enlace a una imagen en real",
+        "Enlace a documentos",
+        "QR hacia un enlace"
+      ]
+    },
+    {
+      "nombre": "Restricciones y Riesgos",
+      "tarjetas": [
+        "Enfrentarse a muchos tipos de dispositivos",
+        "Discrepancias entre la disponibilidad real y la reportada",
+        "Captar interés hacia la solución",
+        "Facilidad de uso para los restaurantes",
+        "Personas con distinto dominio de la tecnología",
+        "Minimizar costos"
+      ]
+    }
+  ]
+}
